@@ -12,8 +12,9 @@
 	/*Write some JavaScript code, that is, variables and operators, to describe the following scenarios. */
 	
 	/* You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay? */
-	alert("The rental price of a movie per day is $3.00.")
-	const rentalPrice = 3.00;
+	// alert("The rental price of a movie per day is $3.00.")
+	const rentalPrice = prompt("What is the price of a movie rental per day?");
+	
 	var littleMermaidDays = prompt("How many days would you like to rent The Little Mermaid?");
 	var littleMermaidTotal = littleMermaidDays * rentalPrice;
 	
@@ -43,10 +44,10 @@
 	alert("You're total pay for this week combined is $" + weekTotalPay.toFixed(2));
 	
 	/* A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule. */
-	var classNotFull = confirm("Is the class you're wanting to attend full?");
-	var noClassConflict = confirm("Does the class time conflict with your schedule?");
+	var classFull = confirm("Is the class you're wanting to attend full?");
+	var classConflict = confirm("Does the class time conflict with your schedule?");
 	
-	var canEnroll = classNotFull && noClassConflict;
+	var canEnroll = !classFull && !classConflict;
 	alert("Can enroll at this time: " + canEnroll);
 	
 	/* A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products. */
