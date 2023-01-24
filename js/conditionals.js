@@ -1,4 +1,4 @@
-
+(function () {
 	"use strict";
 	
 	/* ########################################################################## */
@@ -36,13 +36,13 @@
 			return "The Green Lantern Corps is powered by channeling their \"willpower\".";
 		} else if (color == 'violet') {
 			return "The Violet Lantern Corps is powered by the emotion of \"love\".";
-		} else if (color =='indigo') {
+		} else if (color == 'indigo') {
 			return "The Indigo Tribe's power comes from channeling the emotion of \"compassion\".";
 		} else {
 			return "I don't believe a Lantern Corps exists with the color " + color + ".";
 		}
 	}
-	
+
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
@@ -56,8 +56,8 @@
 	 * You should see a different message every time you refresh the page
 	 */
 	
-	 // console.log(analyzeColor(randomColor));
-	 
+	// console.log(analyzeColor(randomColor));
+	
 	/**
 	 * TODO:
 	 * Comment out the code above, and refactor your function to use a switch-case statement
@@ -123,8 +123,8 @@
 	 * return value.
 	 */
 	
-	function calculateTotal (luckyNumber,totalAmount) {
-		if (luckyNumber === 0){
+	function calculateTotal(luckyNumber, totalAmount) {
+		if (luckyNumber === 0) {
 			return totalAmount * 1;
 		} else if (luckyNumber === 1) {
 			return totalAmount * 0.1;
@@ -138,9 +138,10 @@
 			return 0;
 		}
 	}
-	console.log(calculateTotal(0,100));
-	console.log(calculateTotal(4,100));
-	console.log(calculateTotal(5,100));
+	
+	console.log(calculateTotal(0, 100));
+	console.log(calculateTotal(4, 100));
+	console.log(calculateTotal(5, 100));
 	
 	/**
 	 * TODO:
@@ -162,27 +163,27 @@
 			break;
 		case (1):
 			alert("Congratulations! Your lucky number was: " + luckyNumber + " We will apply a 10% discount to your" +
-				" bill.")
+			" bill.")
 			break;
 		case (2):
 			alert("Congratulations! Your lucky number was: " + luckyNumber + " We will apply a 25% discount to your" +
-				" bill.")
+			" bill.")
 			break;
 		case (3):
 			alert("Congratulations! Your lucky number was: " + luckyNumber + " We will apply a 35% discount to your" +
-				" bill.")
+			" bill.")
 			break;
 		case (4):
 			alert("Congratulations! Your lucky number was: " + luckyNumber + " We will apply a 50% discount to your" +
-				" bill.")
+			" bill.")
 			break;
 		default:
 			alert("Congratulations! Your lucky number was: " + luckyNumber + " We will apply a 100% discount to your" +
-				" bill.");
+			" bill.");
 			break;
 	}
-	alert("Your previous total was: $"+ totalBill+ " After applying your lucky numbers discount. Your new total is:" +
-		" $"+ (calculateTotal(luckyNumber,totalBill).toFixed(2)));
+	alert("Your previous total was: $" + totalBill + " After applying your lucky numbers discount. Your new total is:" +
+	" $" + (calculateTotal(luckyNumber, totalBill).toFixed(2)));
 	/**
 	 *
 	 * TODO:
@@ -202,23 +203,24 @@
 	 * Can you refactor your code to use functions?
 	 * HINT: The way we prompt for a value could be improved
 	 */
-
+	
 	let userConfirm = confirm("Would you like to enter a number?");
-	if (userConfirm === true){
+	if (userConfirm === true) {
 		let userNumber = prompt("Great! What number would you like to enter?");
 		if (isNaN(parseInt(userNumber)) === false) {
-			if (userNumber % 2 !== 0) {
-				alert("The number you entered, " +userNumber + ", is an odd number.");
+			if (userNumber % 2 === 0) {
+				alert("The number you entered, " + userNumber + ", is an even number.");
 			} else {
-				alert("The number you entered, " +userNumber + ", is an even number.");
+				alert("The number you entered, " + userNumber + ", is an odd number.");
 			}
-			alert("Your number added to 100 is " + (parseInt(userNumber)+ 100));
-			if (userNumber < 0) {
-				alert("The number you entered, " + userNumber + ", is a negative number.");
-			} else {
+			alert("Your number added to 100 is " + (parseInt(userNumber) + 100));
+			if (userNumber > 0) {
 				alert("The number you entered, " + userNumber + ", is a positive number.");
+			} else {
+				alert("The number you entered, " + userNumber + ", is a negative number.");
 			}
 		} else {
 			alert("I'm sorry, the \"number\" you've entered is not a number.")
 		}
 	}
+})();
