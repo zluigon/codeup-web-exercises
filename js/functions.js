@@ -21,7 +21,7 @@
  * console.log 'helloMessage' to check your work
  */
 	
-	var helloMessage = sayHello('Luis')
+	let helloMessage = sayHello('Luis')
 	
 	console.log(helloMessage);
 	
@@ -31,13 +31,13 @@
  * variable to the 'sayHello' function. You should see the same output in the
  * console.
  */
-	var myName = 'Luis'
+	let myName = 'Luis'
 	
 	console.log(sayHello(myName));
 	
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
-	var random = Math.floor((Math.random() * 3) + 1);
+	let random = Math.floor((Math.random() * 3) + 1);
 	
 /**
  * TODO:
@@ -73,7 +73,7 @@
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 	function calculateTip(tipPercent,billTotal){
-		var tipPercentValue = tipPercent/100;
+		let tipPercentValue = tipPercent/100;
 		return (tipPercentValue*billTotal).toFixed(2);
 	}
 	
@@ -83,8 +83,8 @@
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
-	var userBillTotal = prompt("What is the total of your bill?")
-	var userTipPercent = prompt("What percent(%) would you like to tip?")
+	let userBillTotal = prompt("What is the total of your bill?")
+	let userTipPercent = prompt("What percent(%) would you like to tip?")
 	alert("Your tip total is: $"+ calculateTip(userTipPercent,userBillTotal));
 	
 /**
@@ -95,8 +95,8 @@
  * price.
  *
  * Example:
- * > var originalPrice = 100;
- * > var discountPercent = .2; // 20%
+ * > let originalPrice = 100;
+ * > let discountPercent = .2; // 20%
  * > applyDiscount(originalPrice, discountPercent) // 80
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
@@ -105,12 +105,12 @@
 	// Discount function with randomly generated price and discount values.
 	alert("This is the discount function with both price and discount randomly generated.")
 	
-	var discountPercent = (Math.random()).toFixed(2);
-	var originalPrice = Math.floor(Math.random()*100);
+	let discountPercent = (Math.random()).toFixed(2);
+	let originalPrice = Math.floor(Math.random()*100);
 	function applyDiscount(originalPrice,discountPercent){
 		alert("The original price is: $" + originalPrice.toFixed(2));
 		alert("The discount percent is: %" + discountPercent);
-		return originalPrice * discountPercent;
+		return (originalPrice - originalPrice * discountPercent);
 	}
 	
 	alert("The final price with the discount applied is: $"+(applyDiscount(originalPrice,discountPercent).toFixed(2)));
@@ -118,13 +118,13 @@
 	// Discount function with user input.
 	alert("This is the discount function with user input.")
 	
-	var userOriginalPrice = prompt('How much was your purchase today?');
-	var userPrice = parseFloat(userOriginalPrice).toFixed(2);
-	var userDiscountPercent = prompt('What percentage(%) would you like to discount off the original price?');
-	var userDiscount = userDiscountPercent/100;
+	let userOriginalPrice = prompt('How much was your purchase today?');
+	let userPrice = parseFloat(userOriginalPrice).toFixed(2);
+	let userDiscountPercent = prompt('What percentage(%) would you like to discount off the original price?');
+	let userDiscount = userDiscountPercent / 100;
 	
 	function applyUserDiscount(userPrice, userDiscount) {
-		return userPrice * userDiscount;
+		return (userPrice - userPrice * userDiscount);
 	}
 		alert("The original price was: $ " + userPrice);
 		alert("The new total with the discount applied is: $" + applyUserDiscount(userPrice,userDiscount).toFixed(2));
