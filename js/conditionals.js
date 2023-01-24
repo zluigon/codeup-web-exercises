@@ -127,13 +127,13 @@
 		if (luckyNumber === 0) {
 			return totalAmount * 1;
 		} else if (luckyNumber === 1) {
-			return totalAmount * 0.1;
+			return totalAmount - (totalAmount * 0.1);
 		} else if (luckyNumber === 2) {
-			return totalAmount * 0.25;
+			return totalAmount - (totalAmount * 0.25);
 		} else if (luckyNumber === 3) {
-			return totalAmount * 0.35;
+			return totalAmount - (totalAmount * 0.35);
 		} else if (luckyNumber === 4) {
-			return totalAmount * 0.50;
+			return totalAmount - (totalAmount * 0.50);
 		} else {
 			return 0;
 		}
