@@ -24,19 +24,19 @@
 	 */
 	
 	function analyzeColor(color) {
-		if (color == 'blue') {
+		if (color === 'blue') {
 			return "The Blue Lantern Corps power is derived from channeling the emotion of \"hope\".";
-		} else if (color == 'red') {
+		} else if (color === 'red') {
 			return "The Red Lantern Corps members power comes from their channeled \"rage\".";
-		} else if (color == 'orange') {
+		} else if (color === 'orange') {
 			return "The Orange Lantern Corps has but a single member, and he channels the emotion of \"greed\".";
-		} else if (color == 'yellow') {
+		} else if (color === 'yellow') {
 			return "Sinestro's Yellow Lantern Corps power is fueled by \"fear\".";
-		} else if (color == 'green') {
+		} else if (color === 'green') {
 			return "The Green Lantern Corps is powered by channeling their \"willpower\".";
-		} else if (color == 'violet') {
+		} else if (color === 'violet') {
 			return "The Violet Lantern Corps is powered by the emotion of \"love\".";
-		} else if (color == 'indigo') {
+		} else if (color === 'indigo') {
 			return "The Indigo Tribe's power comes from channeling the emotion of \"compassion\".";
 		} else {
 			return "I don't believe a Lantern Corps exists with the color " + color + ".";
@@ -47,7 +47,7 @@
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
-//                  will contain a different color every time the page loads)
+//                  will contain a different color every time the page loads=)
 	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'cyan'];
 	let randomColor = colors[Math.floor(Math.random() * colors.length)];
 	/**
@@ -151,6 +151,8 @@
 	 * and alerts to display to the user what their lucky number was, what their
 	 * price before the discount was, and what their price after the discount is.
 	 */
+
+
 // Generate a random number between 0 and 6
 	let luckyNumber = Math.floor(Math.random() * 6);
 	
@@ -184,6 +186,8 @@
 	}
 	alert("Your previous total was: $" + totalBill + " After applying your lucky numbers discount. Your new total is:" +
 	" $" + (calculateTotal(luckyNumber, totalBill).toFixed(2)));
+	
+	
 	/**
 	 *
 	 * TODO:
@@ -205,6 +209,7 @@
 	 */
 	
 	let userConfirm = confirm("Would you like to enter a number?");
+	
 	if (userConfirm === true) {
 		let userNumber = prompt("Great! What number would you like to enter?");
 		if (isNaN(parseInt(userNumber)) === false) {
@@ -222,5 +227,43 @@
 		} else {
 			alert("I'm sorry, the \"number\" you've entered is not a number.")
 		}
+	} else {
+		alert ("No problem. Thank you for your time.")
 	}
+	
+	
+	alert("The following portion is ran by a function.")
+	
+	let userConfirmFunction = confirm("Would you like to enter a number into a function?")
+	
+	function userConfirmed (userConfirmFunction) {
+		if (userConfirmFunction === true) {
+			let userNumber = parseInt(prompt("Amazing!! What number would you like to enter?"));
+			console.log("This is the users number" + userNumber);
+			return userNumberPrompt(userNumber);
+		} else {
+			alert("No number? Okay, thanks for your time.");
+		}
+	}
+	
+	function userNumberPrompt(number){
+		if (isNaN(number) === false){
+			if(number % 2 === 0) {
+				alert("This is the function telling you that your number is even.");
+			} else {
+				alert("This is the function telling you that your number is odd.");
+			}
+			alert("The number you've entered plus 100 is: " + (number + 100));
+			 if (number > 0) {
+			alert("The number you've entered is positive.")
+			 }   else {
+			alert("The number you've entered is negative.");
+			 }
+		} else {
+			alert("The number you've entered is not a number.")
+		}
+	}
+	
+	userConfirmed(userConfirmFunction);
+	
 })();
