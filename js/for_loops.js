@@ -56,9 +56,9 @@ numberCheck();
 
 function numberTree() {
 	for (let i = 0; i < 9; i++) {
-		let numberBranch = "";
+		let numberBranch = ""; //while i < 9, create empty string
 		for (let b = 0; b < i + 1; b++){
-			numberBranch += i + 1;
+			numberBranch += i + 1; //while b < i + 1, "" = "" + (i+1) > "1" concat/coercion
 		} console.log((numberBranch));
 	}
 }
