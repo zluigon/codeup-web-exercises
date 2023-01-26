@@ -52,7 +52,7 @@ function userOddNumber(){
 */
 
 function oddNumberList (input) {
-	console.log("This number should be skipped" + input);
+	console.log("This number should be skipped: " + input);
 	for (let i = 0; i < 50; i++) {
 		if ( i % 2 === 0){
 			 continue;
