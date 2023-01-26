@@ -1,5 +1,4 @@
 "use strict";
-console.log("This is break and continue");
 
 /*TODO:
      Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input.
@@ -7,11 +6,11 @@ console.log("This is break and continue");
 
 function userOddNumber(){
 	let userNumberPrompt = parseInt(prompt("Please enter an odd number between 1-50"));
-	for (let i = 0; i < 10; i++){
+	for (let i = 0; i < 15; i++){
 		if ((userNumberPrompt % 2 !== 0) && (userNumberPrompt >= 1) && (userNumberPrompt <= 50)) {
 			break;
  		} else {
-			 userNumberPrompt = parseInt(prompt("Please enter an odd number between 1-50"));
+			 userNumberPrompt = parseInt(prompt("The number entered " + userNumberPrompt+ " is invalid. Please enter an odd number between 1-50"));
 		}
 	}
 	console.log("The number entered was: " + userNumberPrompt);
@@ -51,3 +50,19 @@ function userOddNumber(){
 	Here is an odd number: 47
 	Here is an odd number: 49
 */
+
+function oddNumberList (input) {
+	console.log("This number should be skipped" + input);
+	for (let i = 0; i < 50; i++) {
+		if ( i % 2 === 0){
+			 continue;
+		}
+		 if ( i !== input) {
+			console.log("Here is an odd number: " + i);
+		} else {
+			console.log("Yikes! Skipping number :" + i);
+		}
+	}
+}
+
+oddNumberList((userOddNumber()));
