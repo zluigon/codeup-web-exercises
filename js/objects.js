@@ -87,6 +87,49 @@
 	 * > console.log(books[0].author.lastName) // "Adams"
 	 */
 	
+	const books = [
+		{
+			title: "The Shining",
+			author: {
+				firstName: "Stephen",
+				lastName: "King",
+			}
+		},
+		{
+			title: "The Haunting of Hill House",
+			author: {
+				firstName: "Shirley",
+				lastName: "Jackson",
+			}
+		},
+		{
+			title: "Dracula",
+			author: {
+				firstName: "Bram",
+				lastName: "Stoker",
+			}
+		},
+		{
+			title: "Red Dragon",
+			author: {
+				firstName: "Thomas",
+				lastName: "Harris",
+			}
+		},
+		{
+			title: "Carrion Comfort",
+			author: {
+				firstName: "Dan",
+				lastName: "Simmons",
+			}
+		}
+	]
+	
+	console.log(books[3].title);
+	console.log(books[3].author.firstName);
+	console.log(books[3].author.lastName);
+	
+	
 	/**
 	 * TODO:
 	 * Loop through the books array and output the following information about
@@ -111,6 +154,8 @@
 	 *      ---
 	 *      ...
 	 */
+	
+	
 	
 	/**
 	 * Bonus:
