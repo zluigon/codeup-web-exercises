@@ -68,14 +68,11 @@
 		if (shopper.amount > spendMoreThan) {
 			let discount = shopper.amount * discountOffer;
 			let discountedAmount = shopper.amount - discount;
-			console.log(shopper.name + " has spent $" + shopper.amount + ". Thus, qualifying for the HEB discount. " + shopper.name + "'s new total is $" + discountedAmount + ".");
+			console.log(shopper.name + " has spent $" + shopper.amount + ". Thus, qualifying for the HEB discount. " + shopper.name + "'s new total after applying the " + discountOffer + "% is $" + discountedAmount + ". Saving $" + discount);
 		} else {
 			console.log(shopper.name + " has spent $" + shopper.amount + ". Unfortunately, the HEB discount only applies on purchases totaling over $" + spendMoreThan + ".");
 		}
 	})
-	
-	
-	
 	
 	/** TODO:
 	 * Create an array of objects that represent books and store it in a
