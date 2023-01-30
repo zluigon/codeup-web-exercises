@@ -15,7 +15,7 @@
 	 * array.
 	 */
 	
-	
+	console.log(names.length);
 	
 	/**
 	 * TODO:
@@ -23,16 +23,29 @@
 	 * accessing each element's index.
 	 */
 	
+	console.log(names[0]);
+	console.log(names[1]);
+	console.log(names[2]);
+	console.log(names[3]);
+	
 	/**
 	 * TODO:
 	 * Write some code that uses a for loop to log every item in the names
 	 * array.
 	 */
 	
+	for (let i = 0; i < names.length; i++) {
+		console.log(names[i]);
+	}
+	
 	/**
 	 * TODO:
 	 * Refactor your above code to use a `forEach` loop
 	 */
+	
+	names.forEach(function (name){
+		console.log(name);
+	})
 	
 	/**
 	 * TODO:
@@ -47,5 +60,23 @@
 	 *  > second([1, 2, 3, 4, 5]) // returns 2
 	 *  > last([1, 2, 3, 4, 5]) // return 5
 	 */
+	
+	const numArray = [1,2,3,4,5];
+	
+	function first (inputArray){
+		console.log(inputArray[0]);
+	}
+	
+	function second(inputArray) {
+		console.log(inputArray[1]);
+	}
+	
+	function last(inputArray) {
+		console.log(inputArray[inputArray.length - 1]);
+	}
+	
+	first(numArray);
+	second(numArray);
+	last(numArray);
 	
 })();
