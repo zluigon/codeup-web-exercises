@@ -155,9 +155,13 @@
 	 *      ...
 	 */
 	
+	// "\n" - newline. Creates new line in JS and console log
 	books.forEach(function (book){
 		console.log("Book # " + (books.indexOf(book) + 1) + "\n" +"Title: " + book.title + "\n" + "Author: " + book.author.firstName + " " + book.author.lastName);
 	})
+	
+	console.log("-- refactored forEach --")
+	books.forEach(showBookInfo);
 	
 	/**
 	 * Bonus:
@@ -168,7 +172,19 @@
 	 *   
 	 */ 
 	 
+	function createBook(title,firstName,lastName){
+		return {
+			title: title,
+			author: {
+				firstName: firstName,
+				lastName: lastName,
+			}
+		}
+	}
 	
+	console.log(createBook("Heart-Shaped Box","Joe","Hill"));
+	console.log(createBook("Manhunt","Gretchen","Felker-Martin"));
+	console.log(createBook("A Black and Endless Sky","Matthew","Lyons"));
 	
 	 /**
 	 * - Create a function named `showBookInfo` that accepts a book object and
@@ -176,4 +192,18 @@
 	 *   `showBookInfo` function.
 	 */
 	
+	 const book = {
+		 title: "The Hollow Kind",
+		 author: {
+			 firstName: "Andy",
+			 lastName: "Davidson",
+		 }
+	 }
+	 
+	 function showBookInfo(input,index){
+		 console.log("Book # " + (index + 1) + "\n" + "Title: " + input.title + "\n" + "Author: " + input.author.firstName + " " + input.author.lastName);
+	 }
+	 
+	 showBookInfo(book);
+	 
 })();
