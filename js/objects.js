@@ -205,5 +205,6 @@
 	 }
 	 
 	 showBookInfo(book);
+// 	 Book # NaN because an object outside an array has an undefined index. Thus adding (undefined + 1) returns NaN
 	 
 })();
