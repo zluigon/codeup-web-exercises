@@ -64,7 +64,7 @@
 	
 	
 	shoppers.forEach(function (shopper){
-		console.log(shopper.name + " has spent $" + shopper.amount + ".");
+		// console.log(shopper.name + " has spent $" + shopper.amount + ".");
 		if (shopper.amount > spendMoreThan) {
 			let discount = shopper.amount * discountOffer;
 			let discountedAmount = shopper.amount - discount;
@@ -155,7 +155,9 @@
 	 *      ...
 	 */
 	
-	
+	books.forEach(function (book){
+		console.log("Book # " + (books.indexOf(book) + 1) + "\n" +"Title: " + book.title + "\n" + "Author: " + book.author.firstName + " " + book.author.lastName);
+	})
 	
 	/**
 	 * Bonus:
@@ -163,6 +165,12 @@
 	 *   name and returns a book object with the properties described
 	 *   previously. Refactor your code that creates the books array to instead
 	 *   use your function.
+	 *   
+	 */ 
+	 
+	
+	
+	 /**
 	 * - Create a function named `showBookInfo` that accepts a book object and
 	 *   outputs the information described above. Refactor your loop to use your
 	 *   `showBookInfo` function.
