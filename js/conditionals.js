@@ -236,7 +236,7 @@
 	
 	let userConfirmFunction = confirm("Would you like to enter a number into a function?")
 	
-	function userConfirmed (userConfirmFunction) {
+	function userConfirmed(userConfirmFunction) {
 		if (userConfirmFunction === true) {
 			let userNumber = parseInt(prompt("Amazing!! What number would you like to enter?"));
 			console.log("This is the users number" + userNumber);
@@ -246,19 +246,19 @@
 		}
 	}
 	
-	function userNumberPrompt(number){
-		if (isNaN(number) === false){
-			if(number % 2 === 0) {
+	function userNumberPrompt(number) {
+		if (isNaN(number) === false) {
+			if (number % 2 === 0) {
 				alert("This is the function telling you that your number is even.");
 			} else {
 				alert("This is the function telling you that your number is odd.");
 			}
 			alert("The number you've entered plus 100 is: " + (number + 100));
-			 if (number > 0) {
-			alert("The number you've entered is positive.")
-			 }   else {
-			alert("The number you've entered is negative.");
-			 }
+			if (number > 0) {
+				alert("The number you've entered is positive.")
+			} else {
+				alert("The number you've entered is negative.");
+			}
 		} else {
 			alert("The number you've entered is not a number.")
 		}
