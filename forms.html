@@ -5,7 +5,8 @@
 	<title>Register With Us</title>
 </head>
 <body>
-<form action="https://request-inspector.glitch.me/" method="post">
+<form action="https://requestinspector.com/inspect/01grpgehzf2ket8xa97dpsxcj7" method="get">
+	
 	<label for="email">Email</label>
 	<input id="email" name="email" type="text" placeholder="Enter your email address">
 	<br>
@@ -14,9 +15,35 @@
 	<input id="password" name="password" type="password" placeholder="Enter your password">
 	<br>
 	
-	<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Tell us more about yourself"></textarea>
+	<label for="bio">Bio:</label>
+	<textarea name="comment" id="bio" cols="30" rows="10" placeholder="Tell us about yourself..."></textarea>
+	<br>
 	
-	<input type="submit">
+	<h3>How did you hear about us?</h3>
+	<input type="radio" name="heard_about_us" id="billboard" value="billboard">
+	<label for="billboard">Billboard</label>
+	<br>
+	<input type="radio" name="heard_about_us" id="radio_advertisement">
+	<label for="radio_advertisement">Radio Advertisement</label>
+	<br>
+	<input type="radio" name="heard_about_us" id="internet_advertisement">
+	<label for="internet_advertisement">Internet Advertisement</label>
+	<br>
+	<input type="radio" name="heard_about_us" id="other">
+	<label for="other">Other</label>
+	<br>
+	
+	<br>
+	<h3>What web browser are you using?</h3>
+	<select name="web_browser" id="web_browser">
+		<option value="chrome">Google Chrome</option>
+		<option value="firefox">Mozilla Firefox</option>
+		<option value="safari">Safari</option>
+		<option value="opera">Opera</option>
+	</select>
+	<br>
+	<br>
+	<button type="submit">submit</button>
 </form>
 </body>
 </html>
