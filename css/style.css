@@ -2,7 +2,53 @@
 this file is named "site.css" and is in a directory named "css"
 */
 
-.fancy-header {
-    color: purple;
+.main-heading {
+    text-align: center;
+}
+
+h1, h2 {
+    color: #8b8000;
     text-decoration: underline;
+}
+
+body {
+    background-color: #573fa1;
+    background-image: url("https://e0.pxfuel.com/wallpapers/123/568/desktop-wallpaper-css-gradient-background-blue-gradient-css-grey-many-more-background-colorful-android-green-and-blue-gradient.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: 'Roboto Mono', monospace;
+}
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: upper-roman;
+}
+
+table, th, td {
+    border: 5px solid;
+}
+
+table th {
+    padding: 15px;
+    font-size: 25px;
+}
+
+table td {
+    padding: 10px;
+    font-size: 18px;
+}
+
+a:hover {
+    color: greenyellow;
+}
+
+a:visited {
+    color: yellow;
+}
+
+a:active {
+    color: red;
 }
