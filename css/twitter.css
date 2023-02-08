@@ -54,6 +54,17 @@ a {
 
 .profile {
     background: var(--light-bg);
+    height: 80px;
+}
+
+.profile-form {
+    float: right;
+    line-height: 80px;
+}
+
+.profile-image {
+    position: absolute;
+    top: 240px;
 }
 
 .btn {
