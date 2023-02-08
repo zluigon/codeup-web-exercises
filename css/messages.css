@@ -1,0 +1,46 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+:root {
+    --bg-info: #c6d5f6;
+    --bg-success: #c7ead2;
+    --bg-warning: #f2f1c2;
+    --bg-error: #f1cbcf;
+
+    --text-info: #453e99;
+    --text-success: #337948;
+    --text-warning: #948130;
+    --text-error: #7e1b32;
+}
+
+.message {
+    border: .1em solid #d4d4c9;
+    border-radius: .3em;
+    margin: .5em;
+    padding: .5em;
+}
+
+.message-info {
+    color: var(--text-info);
+    background-color: var(--bg-info);
+}
+
+.message-success {
+    color: var(--text-success);
+    background-color: var(--bg-success);
+}
+
+.message-warning {
+    color: var(--text-warning);
+    background-color: var(--bg-warning);
+}
+
+.message-error {
+    color: var(--text-error);
+    background-color: var(--bg-error);
+}
