@@ -36,7 +36,7 @@ a {
     background: var(--light-bg);
     position: fixed;
     width: 100%;
-    z-index: auto;
+    z-index: 1000;
 }
 
 .nav {
@@ -121,7 +121,7 @@ a {
     background-color: var(--light-bg);
     border-bottom: 1px solid var(--separator-color);
     padding: .5em;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .media-image {
