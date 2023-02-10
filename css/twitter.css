@@ -55,6 +55,11 @@ a {
     color: var(--link-color);
 }
 
+.nav-item {
+    display: inline-block;
+    padding: 1.5em;
+}
+
 .profile {
     background: var(--light-bg);
     height: 80px;
@@ -95,11 +100,6 @@ a {
 
 .text-muted {
     color: var(--main-link-color);
-}
-
-.top-nav li {
-    display: inline-block;
-    padding: 1.5em;
 }
 
 .profile-details, .timeline, .who-to-follow {
