@@ -18,7 +18,7 @@ li {
 
 
 /* small screen content appearance */
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 576px) {
     body {
         display: flex;
         flex-direction: column;
@@ -94,7 +94,7 @@ li {
 }
 
 /* large screen content appearance */
-@media screen and (min-width: 426px) {
+@media screen and (min-width: 577px) {
     .alert-info {
         display: none;
     }
