@@ -47,10 +47,10 @@
 		// TODO: Set text color of li with dbid = 1 to blue
 		for (let i = 0; i < listItems.length; i++) {
 			let dbid = listItems[i].getAttribute("data-dbid");
-			if (dbid == 1) {
-				listItems[i].style.color = "blue";
-			} else if (dbid % 2 === 0) {
+			if (dbid % 2 === 0) {
 				listItems[i].style.color = "gray";
+			} else if (dbid == 1) {
+				listItems[i].style.color = "blue";
 			}
 		}
 		
