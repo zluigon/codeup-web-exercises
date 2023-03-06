@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Konami Code</title>
+	
+	<style>div {
+		border: 1px solid red;
+	}
+	
+	.controller {
+		border: 3px dashed blue;
+	}
+	</style>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<div class="controller">
+	<div>&leftarrow;</div>
+	<div>&rightarrow;</div>
+	<div>&uparrow;</div>
+	<div>&downarrow;</div>
+	<div>b</div>
+	<div>a</div>
+</div>
+
+<p>Enter the Konami Code: "↑ ↑ ↓ ↓ ← → ← → b a enter" (the return key)</p>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+</script>
+
+<script>
+	"use strict";
+	
+	$(document).keyup(function (e) {
+		console.log(e.keyCode);
+	});
+	
+	let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+	
+	// $(function () {
+	// 	alert("Enter the Konami Code")
+	// });
+
+	
+
+</script>
+</body>
+</html>
+
+
