@@ -6,15 +6,46 @@
 </head>
 <body>
 
+<div class="container" id="div1">
+	<h1 class="header codeup" id="header-1">This is my header.</h1>
+	
+	<p class="paragraph" id="p-1">This is my paragraph.</p>
+	
+	<ul class="list">
+		<li class="list-item codeup" id="list-item-1">List item #1</li>
+		<li class="list-item" id="list-item-2">List item #2</li>
+		<li class="list-item codeup" id="list-item-3">List item #3</li>
+		<li class="list-item" id="list-item-4">List item #4</li>
+	</ul>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
 </script>
 
 <script>
 	
-	$(function (){
-		alert('The DOM has finished loaded!!!')
-	});
+	// $(function (){
+	// 	alert("The DOM has finished loaded!!!")
+	// });
+	
+	// let pContents = $("#p-1").html();
+	// alert(pContents);
+	//
+	// let hContents = $(".header").html();
+	// alert(hContents);
+	//
+	// $(".codeup").css("border","1px solid red");
+	
+	$("li").css("font-size", "20px");
+	
+	$("h1, p, li").css("background-color", "yellow");
+	
+	let hContent = $("h1").html();
+	alert(hContent);
+	
+	
+	
 	
 </script>
 </body>
