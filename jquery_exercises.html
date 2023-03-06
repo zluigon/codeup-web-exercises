@@ -34,19 +34,36 @@
 	//
 	// let hContents = $(".header").html();
 	// alert(hContents);
-	//
+	
 	// $(".codeup").css("border","1px solid red");
 	
-	$("li").css("font-size", "20px");
+	// $("li").css("font-size", "20px");
+	//
+	// $("h1, p, li").css("background-color", "yellow");
+	//
+	// let hContent = $("h1").html();
+	// alert(hContent);
 	
-	$("h1, p, li").css("background-color", "yellow");
+	$(".codeup").click(
+			function () {
+				$(this).css("background-color", "blue")
+			});
 	
-	let hContent = $("h1").html();
-	alert(hContent);
+	$("p").dblclick(
+			function () {
+				$(this).css("font-size", "18px")
+			});
 	
-	
-	
-	
+	$('li').hover(
+			function () {
+				$(this).css('color', 'red');
+			},
+			function () {
+				$(this).css('color', 'black');
+			}
+			);
+
+
 </script>
 </body>
 </html>
