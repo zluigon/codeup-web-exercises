@@ -3,30 +3,48 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Konami Code</title>
 	
-	<style>div {
-		border: 1px solid red;
-	}
-	
-	.controller {
-		border: 3px dashed blue;
-	}
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		body {
+			background-color: #DDDDDD;
+		}
+		
+		h1 {
+			text-align: center;
+			font-size: 4rem;
+			margin-top: 12rem;
+		}
+		
+		span {
+			text-decoration: underline;
+		}
+		
+		p {
+			text-align: center;
+			font-size: 2rem;
+			margin-top: 2rem;
+		}
+		
+		p:nth-child(3){
+			font-size: 5em;
+			color: #DDDDDD;
+		}
+		
 	</style>
 </head>
 <body>
-<h1>Konami Code</h1>
+<h1>Enter the <span>Konami</span> Code</h1>
 
-<div class="controller">
-	<div>&leftarrow;</div>
-	<div>&rightarrow;</div>
-	<div>&uparrow;</div>
-	<div>&downarrow;</div>
-	<div>b</div>
-	<div>a</div>
-</div>
+<p>Click on the page to focus and use keyboard to enter. </p>
 
-<p>Enter the Konami Code: "↑ ↑ ↓ ↓ ← → ← → b a enter" (the return key)</p>
+<p>Congratulations!!!</p>
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
@@ -35,16 +53,42 @@
 <script>
 	"use strict";
 	
-	$(document).keyup(function (e) {
-		console.log(e.keyCode);
+	$("span").dblclick(function () {
+		alert("↑ ↑ ↓ ↓ ← → ← → b a enter")
 	});
 	
+	$("span").hover(
+			function () {
+				$(this).css("color", "red")
+			},
+			function () {
+				$(this).css("color", "black")
+			});
+	
+	let keyPress = [];
 	let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
 	
-	// $(function () {
-	// 	alert("Enter the Konami Code")
-	// });
-
+	$(document).keyup(function (e) {
+		keyPress.push(e.keyCode);
+		console.log(e.keyCode);
+		if (e.keyCode === 13) {
+			checkCode(keyPress)
+		}
+	});
+	
+	function checkCode(keyPress) {
+		if (keyPress.join(",") === konamiCode.join(",")) {
+			$(function () {
+				alert("Congratulations!")
+				$("body").css("background-color", "darkred");
+			});
+		} else {
+			$(function () {
+				alert("Please try again.")
+				window.location.reload();
+			});
+		}
+	}
 	
 
 </script>
