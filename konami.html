@@ -19,7 +19,7 @@
 		h1 {
 			text-align: center;
 			font-size: 4rem;
-			margin-top: 12rem;
+			margin-top: 6rem;
 		}
 		
 		span {
@@ -31,25 +31,12 @@
 			font-size: 2rem;
 			margin-top: 2rem;
 		}
-		
-		p:nth-child(3) {
-			font-size: 5em;
-			color: #DDDDDD;
-		}
-		
-		p:nth-child(4) {
-			font-size: 1em;
-			color: #DDDDDD;
-		}
 	</style>
 </head>
 <body>
 <h1>Enter the <span>Konami</span> Code</h1>
 
 <p>Click on the page to focus and use keyboard to enter. </p>
-
-<p>Congratulations!!!</p>
-<p>Refresh to reset.</p>
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
@@ -60,7 +47,7 @@
 	
 	$("span").hover(
 			function () {
-				$(this).css("color", "red")
+				$(this).css("color", "darkred")
 			},
 			function () {
 				$(this).css("color", "black")
@@ -68,24 +55,25 @@
 		alert("↑ ↑ ↓ ↓ ← → ← → b a enter")
 	});
 	
-	let keyPress = [];
+	let keysPress = [];
 	let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
 	
 	$(document).keyup(function (e) {
-		keyPress.push(e.keyCode);
+		keysPress.push(e.keyCode);
 		console.log(e.keyCode);
 		if (e.keyCode === 13) {
-			checkCode(keyPress)
+			checkCode(keysPress)
 		}
 	});
 	
 	function checkCode(keyPress) {
 		if (keyPress.join(",") === konamiCode.join(",")) {
 			$(function () {
-				alert("Congratulations!")
 				$("body").css("background-color", "darkred");
 				$("span").off();
 				$("span").css("color", "#DDDDDD")
+				$("h1").html("<h1>Congratulations!!<br><br>You've successfully entered the code.</h1>")
+				$("p").html("Refresh the page to reset.")
 			});
 		} else {
 			$(function () {
