@@ -6,23 +6,28 @@
 	<title>jQuery F.A.Q.</title>
 	
 	<style>
-		* {
-			padding: 0;
-			margin: 0;
-		}
+		/** {*/
+		/*	padding: 0;*/
+		/*	margin: 0;*/
+		/*}*/
 		
-		body {
-			text-align: center;
-		}
+		/*body {*/
+		/*	text-align: center;*/
+		/*}*/
 		
-		p {
-			padding: 1em;
-			text-decoration: underline;
-		}
+		/*p {*/
+		/*	padding: 1em;*/
+		/*	text-decoration: underline;*/
+		/*}*/
 		
-		dt, dd {
-			padding: .3em;
-		}
+		/*dt, dd {*/
+		/*	padding: .3em;*/
+		/*}*/
+		
+		/*button {*/
+		/*	padding: .3em;*/
+		/*	margin: .2em;*/
+		/*}*/
 		
 		.invisible {
 			visibility: hidden;
@@ -31,21 +36,16 @@
 		.highlight {
 			background-color: #fffc46;
 		}
-		
-		button {
-			padding: .3em;
-			margin: .2em;
-		}
+	
+	
 	</style>
 </head>
 <body>
 
 <main>
-	<p>10 National Park FAQs</p>
+	<h1>10 National Park FAQs</h1>
 	
 	<p>"All FAQs are from <a href="https://visitusaparks.com/u-s-national-park-faqs/">Visit USA Parks</a>"</p>
-	
-	<button id="myBtn">Click me to show all FAQs</button>
 	
 	<dl>
 		<dt>1. How many national parks are there in total in the United States?</dt>
@@ -98,7 +98,36 @@
 			Park Service</a>, which is a federal agency of the Department of Interior.
 		</dd>
 	</dl>
-
+	
+	<button id="myBtn">Click me to show all FAQs</button>
+	
+	<ul>
+		<h3>Acadia, Maine</h3>
+		<li>Is the fifth-smallest national park by land area</li>
+		<li>The park was named after a region of Greece</li>
+		<li>Contains 158 Miles of Hiking Trails</li>
+		<li>Was the first national park to be created east of the Mississippi River and is the only national park
+			in the Northeast
+		</li>
+	</ul>
+	<ul>
+		<h3>Yosemite, California</h3>
+		<li>Is the nation's third-largest national park</li>
+		<li>Home to one of the tallest waterfalls in the world</li>
+		<li>Is the only national park to host the winter Olympics</li>
+		<li>Yosemite Valley was formed by glaciers</li>
+	</ul>
+	<ul>
+		<h3>Yellowstone, Wyoming</h3>
+		<li>Yellowstone is a super volcano</li>
+		<li>The park encompasses 3,472 square miles which makes it larger than Rhode Island and Delaware
+			combined
+		</li>
+		<li>Has approximately 1,000 miles of hoking trails</li>
+		<li>The park is contained in three states: 96% in Wyoming, 3% in Montana, and 1% in Idaho</li>
+	</ul>
+	
+	<button id="btn2">Click me to highlight last item</button>
 
 </main>
 
@@ -114,6 +143,12 @@
 	
 	$("dt").click(function () {
 		$(this).toggleClass("highlight");
+	});
+	
+	$("#btn2").click(function () {
+		$("ul").each(function () {
+			$(this).children().last().toggleClass("highlight")
+		});
 	});
 
 </script>
