@@ -32,11 +32,11 @@
 			margin-top: 2rem;
 		}
 		
-		p:nth-child(3){
+		p:nth-child(3) {
 			font-size: 5em;
 			color: #DDDDDD;
 		}
-		
+	
 	</style>
 </head>
 <body>
@@ -53,17 +53,15 @@
 <script>
 	"use strict";
 	
-	$("span").dblclick(function () {
-		alert("↑ ↑ ↓ ↓ ← → ← → b a enter")
-	});
-	
 	$("span").hover(
 			function () {
 				$(this).css("color", "red")
 			},
 			function () {
 				$(this).css("color", "black")
-			});
+			}).dblclick(function () {
+		alert("↑ ↑ ↓ ↓ ← → ← → b a enter")
+	});
 	
 	let keyPress = [];
 	let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
@@ -89,7 +87,7 @@
 			});
 		}
 	}
-	
+
 
 </script>
 </body>
