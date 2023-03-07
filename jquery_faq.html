@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery F.A.Q.</title>
+	
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		body {
+			text-align: center;
+		}
+		
+		p {
+			padding: 1em;
+			text-decoration: underline;
+		}
+		
+		dt, dd {
+			padding: .3em;
+		}
+		
+		.invisible {
+			visibility: hidden;
+		}
+		
+		.highlight {
+			background-color: #fffc46;
+		}
+	</style>
+</head>
+<body>
+
+<main>
+	<p>10 National Park FAQs</p>
+	
+	<p>"All FAQs are from <a href="https://visitusaparks.com/u-s-national-park-faqs/">Visit USA Parks</a>"</p>
+	
+	<button id="myBtn">Click me to show all FAQs</button>
+	
+	<dl>
+		<dt>1. How many national parks are there in total in the United States?</dt>
+		<dd class="invisible">There are currently 63 national parks in the United States.</dd>
+		
+		<dt>2. Which national parks are the best?</dt>
+		<dd class="invisible">We think that every national park is worth visiting. However, there are some national
+			parks that are particularly unique in the world due to their geography.
+		</dd>
+		
+		<dt>3. Which national parks have the most visitors?</dt>
+		<dd class="invisible">Popular national parks with the most overnight visitors are Grand Canyon, Yosemite &
+			Yellowstone.
+		</dd>
+		
+		<dt>4. Which national parks have the most wildlife?</dt>
+		<dd class="invisible">All national parks have wildlife from snakes and birds to larger animals such as wolves,
+			bears, moose and buffalo and even marine life.
+		</dd>
+		
+		<dt>5. Do national parks have guided tours?</dt>
+		<dd class="invisible">Yes, each national park offers guided tours that can either be hosted by the <a
+				href="https://www.nps.gov/planyourvisit/index.htm">National Park Service</a> (NPS) or by certified
+			guides.
+		</dd>
+		
+		<dt>6. How many people visit national parks each year?</dt>
+		<dd class="invisible">Last year, there were 327 million national park visits in the United States.</dd>
+		
+		<dt>7. Are there general rules when visiting a national park or does each park have specific ones?</dt>
+		<dd class="invisible">Yes, there are general rules when visiting national parks and you will find this
+			information on the <a href="https://www.nps.gov/aboutus/lawsandpolicies.htm">official national park
+				website.</a></dd>
+		
+		<dt>8. Where can I find official park maps?</dt>
+		<dd class="invisible">We think the best way to utilize a complete map of all national parks on a map is to
+			use the <a href="https://findyourpark.com/">Find Your Park</a> tool provided by the National Park Service
+			website.
+		</dd>
+		
+		<dt>9. Are national parks open all year round?</dt>
+		<dd class="invisible">The answer to this frequently-asked national parks question is that it depends on the
+			park. While most national parks are open year-round, there might be some entrances that are closed due to
+			weather or construction.
+		</dd>
+		
+		<dt>10. Who is in charge of the national parks?</dt>
+		<dd class="invisible">All national parks in the United States are managed and and supervised by the <a
+				href="https://www.nps.gov/index.htm">National
+			Park Service</a>, which is a federal agency of the Department of Interior.
+		</dd>
+	</dl>
+
+
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+<script>
+	
+	$("#myBtn").click(function () {
+		$("dd").toggleClass("invisible");
+	});
+	
+	$("dt").click(function () {
+		$(this).toggleClass("highlight");
+	});
+
+</script>
+</body>
+</html>
