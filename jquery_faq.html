@@ -36,6 +36,14 @@
 		.highlight {
 			background-color: #fffc46;
 		}
+		
+		.bold {
+			font-weight: bold;
+		}
+		
+		.blue-font {
+			color: blue;
+		}
 	
 	
 	</style>
@@ -99,10 +107,10 @@
 		</dd>
 	</dl>
 	
-	<button id="myBtn">Click me to show all FAQs</button>
+	<a id="myBtn" href="#">Click me to toggle all FAQs</a>
 	
+	<h3>Acadia, Maine</h3>
 	<ul>
-		<h3>Acadia, Maine</h3>
 		<li>Is the fifth-smallest national park by land area</li>
 		<li>The park was named after a region of Greece</li>
 		<li>Contains 158 Miles of Hiking Trails</li>
@@ -110,15 +118,17 @@
 			in the Northeast
 		</li>
 	</ul>
+	
+	<h3>Yosemite, California</h3>
 	<ul>
-		<h3>Yosemite, California</h3>
 		<li>Is the nation's third-largest national park</li>
 		<li>Home to one of the tallest waterfalls in the world</li>
 		<li>Is the only national park to host the winter Olympics</li>
 		<li>Yosemite Valley was formed by glaciers</li>
 	</ul>
+	
+	<h3>Yellowstone, Wyoming</h3>
 	<ul>
-		<h3>Yellowstone, Wyoming</h3>
 		<li>Yellowstone is a super volcano</li>
 		<li>The park encompasses 3,472 square miles which makes it larger than Rhode Island and Delaware
 			combined
@@ -127,7 +137,7 @@
 		<li>The park is contained in three states: 96% in Wyoming, 3% in Montana, and 1% in Idaho</li>
 	</ul>
 	
-	<button id="btn2">Click me to highlight last item</button>
+	<a id="btn2" href="#">Click me to highlight last item</a>
 
 </main>
 
@@ -149,6 +159,14 @@
 		$("ul").each(function () {
 			$(this).children().last().toggleClass("highlight")
 		});
+	});
+	
+	$("h3").click(function () {
+		$(this).next().toggleClass("bold");
+	});
+	
+	$("li").click(function () {
+		$(this).parent().toggleClass("blue-font");
 	});
 
 </script>
