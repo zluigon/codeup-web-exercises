@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<title>jQuery F.A.Q.</title>
 	
 	<style>
@@ -82,7 +83,7 @@
 		</dd>
 	</dl>
 	
-	<a id="myBtn" href="#">Click me to toggle all FAQs</a>
+	<a id="btn1" href="#">Click me to toggle all FAQs</a>
 	
 	<h3>Acadia, Maine</h3>
 	<ul>
@@ -115,17 +116,20 @@
 	<a id="btn2" href="#">Click me to highlight last item</a>
 	
 	
-	<div class="bonus" style="display: flex; justify-content: space-around">
-		<div class="left-frame" style="border: 4px solid saddlebrown; width: 256px; height: 256px">
+	<div class="bonus">
+		<div class="frame" id="left-frame">
 			<img src="img/acadia-national-park.png">
+			<button id="btn4">Swap</button>
 		</div>
 		
-		<div class="center-frame" style="border: 4px solid saddlebrown; width: 256px; height: 256px">
+		<div class="frame" id="center-frame">
 			<img src="img/yosemite-national-park.png">
+			<button id="btn5">Swap</button>
 		</div>
 		
-		<div class="right-frame" style="border: 4px solid saddlebrown; width: 256px; height: 256px">
+		<div class="frame" id="right-frame">
 			<img src="img/yellowstone-national-park.png">
+			<button id="btn6">Swap</button>
 		</div>
 	</div>
 
@@ -137,7 +141,7 @@
 
 <script>
 	
-	$("#myBtn").click(function (e) {
+	$("#btn1").click(function (e) {
 		e.preventDefault();
 		$("dd").toggleClass("invisible");
 	});
@@ -162,38 +166,52 @@
 	});
 	
 	// Bonus:
+	$(".bonus").css({
+		'display': 'flex',
+		'justify-content': 'space-around'
+	});
+	
+	$(".frame").css({
+		'height': '300px',
+		'width': '256px',
+		'display': 'flex',
+		'flex-direction': 'column',
+		'justify-content': 'center',
+		'align-content': 'center'
+	});
 	
 	$("img").css({
+		'border': '4px solid saddlebrown',
 		'height': '256px',
 		'width': '256px'
-	})
-	
-	$('.left-frame').click(function () {
-		let lChange = $(".left-frame").find("img").attr("src");
-		let cChange = $(".center-frame").find("img").attr("src");
-		$(".center-frame").find("img").attr("src", lChange);
-		$(".left-frame").find("img").attr("src", cChange);
 	});
 	
-	$('.right-frame').click(function () {
-		let rChange = $(".right-frame").find("img").attr("src");
-		let cChange = $(".center-frame").find("img").attr("src");
-		$(".center-frame").find("img").attr("src", rChange);
-		$(".right-frame").find("img").attr("src", cChange);
+	$('#btn4').click(function () {
+		let lChange = $("#left-frame").find("img").attr("src");
+		let cChange = $("#center-frame").find("img").attr("src");
+		$("#center-frame").find("img").attr("src", lChange);
+		$("#left-frame").find("img").attr("src", cChange);
 	});
 	
-	$(".center-frame").click(function () {
+	$('#btn6').click(function () {
+		let rChange = $("#right-frame").find("img").attr("src");
+		let cChange = $("#center-frame").find("img").attr("src");
+		$("#center-frame").find("img").attr("src", rChange);
+		$("#right-frame").find("img").attr("src", cChange);
+	});
+	
+	$("#btn5").click(function () {
 		let randomChange = (Math.random() * 1).toFixed(2);
 		if (randomChange < 0.5) {
-			let lChange = $(".left-frame").find("img").attr("src");
-			let cChange = $(".center-frame").find("img").attr("src");
-			$(".center-frame").find("img").attr("src", lChange);
-			$(".left-frame").find("img").attr("src", cChange);
+			let lChange = $("#left-frame").find("img").attr("src");
+			let cChange = $("#center-frame").find("img").attr("src");
+			$("#center-frame").find("img").attr("src", lChange);
+			$("#left-frame").find("img").attr("src", cChange);
 		} else {
-			let rChange = $(".right-frame").find("img").attr("src");
-			let cChange = $(".center-frame").find("img").attr("src");
-			$(".center-frame").find("img").attr("src", rChange);
-			$(".right-frame").find("img").attr("src", cChange);
+			let rChange = $("#right-frame").find("img").attr("src");
+			let cChange = $("#center-frame").find("img").attr("src");
+			$("#center-frame").find("img").attr("src", rChange);
+			$("#right-frame").find("img").attr("src", cChange);
 		}
 	});
 
