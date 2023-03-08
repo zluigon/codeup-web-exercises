@@ -138,6 +138,21 @@
 	</ul>
 	
 	<a id="btn2" href="#">Click me to highlight last item</a>
+	
+	
+	<div class="bonus" style="display: flex; justify-content: space-around">
+		<div class="left-frame" style="border: 4px solid saddlebrown; width: 256px; height: 256px">
+			<img src="img/acadia-national-park.png">
+		</div>
+		
+		<div class="center-frame" style="border: 4px solid saddlebrown; width: 256px; height: 256px">
+			<img src="img/yosemite-national-park.png">
+		</div>
+		
+		<div class="right-frame" style="border: 4px solid saddlebrown; width: 256px; height: 256px">
+			<img src="img/yellowstone-national-park.png">
+		</div>
+	</div>
 
 </main>
 
@@ -167,6 +182,42 @@
 	
 	$("li").click(function () {
 		$(this).parent().toggleClass("blue-font");
+	});
+	
+	// Bonus:
+	
+	$("img").css({
+		'height': '256px',
+		'width': '256px'
+	})
+	
+	$('.left-frame').click(function () {
+		let lChange = $(".left-frame").find("img").attr("src");
+		let cChange = $(".center-frame").find("img").attr("src");
+		$(".center-frame").find("img").attr("src", lChange);
+		$(".left-frame").find("img").attr("src", cChange);
+	});
+	
+	$('.right-frame').click(function () {
+		let rChange = $(".right-frame").find("img").attr("src");
+		let cChange = $(".center-frame").find("img").attr("src");
+		$(".center-frame").find("img").attr("src", rChange);
+		$(".right-frame").find("img").attr("src", cChange);
+	});
+	
+	$(".center-frame").click(function () {
+		let randomChange = (Math.random() * 1).toFixed(2);
+		if (randomChange < 0.5) {
+			let lChange = $(".left-frame").find("img").attr("src");
+			let cChange = $(".center-frame").find("img").attr("src");
+			$(".center-frame").find("img").attr("src", lChange);
+			$(".left-frame").find("img").attr("src", cChange);
+		} else {
+			let rChange = $(".right-frame").find("img").attr("src");
+			let cChange = $(".center-frame").find("img").attr("src");
+			$(".center-frame").find("img").attr("src", rChange);
+			$(".right-frame").find("img").attr("src", cChange);
+		}
 	});
 
 </script>
