@@ -137,7 +137,8 @@
 
 <script>
 	
-	$("#myBtn").click(function () {
+	$("#myBtn").click(function (e) {
+		e.preventDefault();
 		$("dd").toggleClass("invisible");
 	});
 	
@@ -145,7 +146,8 @@
 		$(this).toggleClass("highlight");
 	});
 	
-	$("#btn2").click(function () {
+	$("#btn2").click(function (e) {
+		e.preventDefault()
 		$("ul").each(function () {
 			$(this).children().last().toggleClass("highlight")
 		});
