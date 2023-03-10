@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mapbox Api</title>
+	
+	<!--Mapbox CDN-->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
+	
+	<!--Geocoder-->
+	<script src="js/mapbox-geocoder-utils.js"></script>
+
+</head>
+<body>
+
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+<div id='map' style='width: 500px; height: 500px;'></div>
+
+<div>
+	<select name="zoom-select" id="zoom-select">
+		<option value="5">Set zoom to 5</option>
+		<option value="15">Set zoom to 15</option>
+		<option value="20">Set zoom to 20</option>
+	</select>
+</div>
+
+<div>
+	<label for="geocode-search"></label>
+	<input type="search" id="geocode-search" placeholder="Enter address">
+	<button type="submit" id="search-btn">Search</button>
+</div>
+
+<div>
+	<button type="button" id="toggle-markers">Click to toggle markers</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<script>
+	
+	const myToken = 'pk.eyJ1Ijoiemx1aWdvbiIsImEiOiJjbGYyb2oyZWswa2l1M3RvODRxenJ2MWVoIn0.BlJ22abmg_RrUUe0bvMFSg'
+	
+	mapboxgl.accessToken = myToken;
+	
+	const map = new mapboxgl.Map({
+		container: 'map', // container ID
+		style: 'mapbox://styles/mapbox/streets-v12', // style URL
+		center: [-74.11, 40.98], // starting position [lng, lat]
+		zoom: 13, // starting zoom
+	});
+	
+	// Add zoom and rotation controls to the map.
+	map.addControl(new mapboxgl.NavigationControl());
+	
+	// Create a default Marker and add it to the map.
+	// const marker = new mapboxgl.Marker()
+	// 		.setLngLat([-74.111, 40.984])
+	// 		.addTo(map);
+	
+	// Add Popup
+	// const cafePopup = new mapboxgl.Popup()
+	// 		.setHTML("<p>This is my favorite restaurant</p>");
+	//
+	// marker.setPopup(cafePopup);
+	
+	// Array of favorite restaurants
+	const restaurants = [{
+		name: "Cafe 37",
+		address: [-74.111, 40.984],
+		message: "<p>Eclectic New American cuisine is artfully presented at this charming venue with patio seating.</p>"
+	}, {
+		name: "Park West Tavern",
+		address: [-74.110, 40.980],
+		message:
+				"<p>Warm pick for New American cuisine, including steaks & seafood, plus a full bar with craft brews</p>"
+	}, {
+		name: "Brooklyn's Brick Oven Pizzeria",
+		address: [-74.117, 40.979],
+		message: "<p>Popular pizzeria serving up brick-oven pies & casual Italian grub.</p>"
+	}];
+	
+	// forEach creating marker and popup for every restaurant
+	restaurants.forEach(function (restaurant) {
+		const marker = new mapboxgl.Marker()
+				.setLngLat(restaurant.address)
+				.addTo(map);
+		
+		const popUp = new mapboxgl.Popup()
+				.setHTML(restaurant.name + "\n" + restaurant.message)
+		marker.setPopup(popUp)
+	});
+	
+	
+	// Add zoom selector
+	const zoomSelect = document.querySelector("#zoom-select");
+	
+	function zoom(e) {
+		e.preventDefault();
+		let zoomValue = zoomSelect.value;
+		map.setZoom(zoomValue);
+	}
+	
+	zoomSelect.addEventListener("change", zoom);
+	
+	// 	Add user address input
+	
+	const userInput = document.querySelector("#geocode-search");
+	const searchBtn = document.querySelector("#search-btn");
+	
+	
+	function searchGeo(search, token) {
+		const input = userInput.value;
+		
+		geocode(input, token).then(function (results) {
+			let marker = new mapboxgl.Marker()
+					.setLngLat(results)
+					.addTo(map);
+			
+			map.flyTo({
+				center: results,
+				zoom: 16,
+			});
+			
+		});
+	}
+	
+	searchBtn.addEventListener("click", function () {
+		let searchInput = searchGeo.value;
+		let myToken = 'pk.eyJ1Ijoiemx1aWdvbiIsImEiOiJjbGYyb2oyZWswa2l1M3RvODRxenJ2MWVoIn0.BlJ22abmg_RrUUe0bvMFSg'
+		
+		searchGeo(searchInput, myToken);
+	});
+	
+	// 	Toggle marker display
+	// Marker class: class="mapboxgl-marker
+	
+	$("#toggle-markers").click(function () {
+		$(".mapboxgl-marker").toggle();
+	});
+
+</script>
+
+</body>
+</html>
