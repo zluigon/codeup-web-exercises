@@ -9,8 +9,9 @@
 	<script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
 	
-	<!--Geocoder-->
-	<script src="js/mapbox-geocoder-utils.js"></script>
+	<!--jQuery-->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+	        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -20,9 +21,11 @@
 
 <div>
 	<select name="zoom-select" id="zoom-select">
-		<option value="5">Set zoom to 5</option>
-		<option value="15">Set zoom to 15</option>
-		<option value="20">Set zoom to 20</option>
+		<option>Select a Zoom level</option>
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="15">15</option>
+		<option value="20">20</option>
 	</select>
 </div>
 
@@ -35,9 +38,6 @@
 <div>
 	<button type="button" id="toggle-markers">Click to toggle markers</button>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 <script>
 	
@@ -105,8 +105,7 @@
 	
 	zoomSelect.addEventListener("change", zoom);
 	
-	// 	Add user address input
-	
+	// 	Add geocoding
 	const userInput = document.querySelector("#geocode-search");
 	const searchBtn = document.querySelector("#search-btn");
 	
