@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather Map</title>
+	
+	<!--Bootstrap-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+	      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	
+	<!--jQuery-->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+	        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+	
+	<!--Mapbox-->
+	
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
+
+</head>
+<body>
+
+
+<div id="weatherBody"></div>
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+
+
+<!--JS Scripts-->
+<!--keys-->
+<script src="js/keys.js"></script>
+
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<!--<script>-->
+<!--	mapboxgl.accessToken = MAPBOX_KEY;-->
+<!--	-->
+<!--	const map = new mapboxgl.Map({-->
+<!--		container: 'map', // container ID-->
+<!--		style: 'mapbox://styles/mapbox/streets-v12', // style URL-->
+<!--		center: [-74.11, 40.98], // starting position [lng, lat]-->
+<!--		zoom: 12, // starting zoom-->
+<!--	});-->
+<!--</script>-->
+
+
+<!--Custom JS-->
+<script>
+	(function () {
+		
+		
+		// Onecall Endpoint
+		$.get("http://api.openweathermap.org/data/3.0/onecall", {
+			APPID: OPEN_WEATHER_APPID,
+			lat: 40.98,
+			lon: -74.11,
+			units: "imperial",
+			lang: "en"
+		}).done(function (data) {
+			console.log("Onecall Endpoint");
+			console.log('The entire response:', data);
+			console.log('Diving in - here is current information: ', data.current);
+			console.log('A step further - information for tomorrow: ', data.daily[1]);
+		});
+		
+		// // Weather Endpoint
+		// $.get("http://api.openweathermap.org/data/2.5/weather", {
+		// 	APPID: OPEN_WEATHER_APPID,
+		// 	q: "Ridgewood, US",
+		// 	units: "imperial"
+		// }).done(function (data) {
+		// 	console.log("Weather Endpoint")
+		// 	console.log(data);
+		// });
+		//
+		// // Forecast Endpoint
+		// $.get("http://api.openweathermap.org/data/2.5/forecast", {
+		// 	APPID: OPEN_WEATHER_APPID,
+		// 	lat: 40.98,
+		// 	lon: -74.11,
+		// 	units: "imperial"
+		// }).done(function (data) {
+		// 	console.log("Forecast Endpoint")
+		// 	console.log('5 day forecast', data);
+		// });
+		
+		
+	})();
+</script>
+
+
+</body>
+</html>
