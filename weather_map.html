@@ -20,9 +20,13 @@
 
 </head>
 <body>
-
-
+<div>
+	<input type="text" placeholder="Search for weather" id="searchInput">
+	<button id="myBtn">Click here to search</button>
+</div>
 <div id="weatherBody"></div>
+
+<div id="forecastBody"></div>
 
 <div id='map' style='width: 400px; height: 300px;'></div>
 
@@ -53,46 +57,90 @@
 
 <!--Custom JS-->
 <script>
-	(function () {
-		
-		
-		// Onecall Endpoint
-		$.get("http://api.openweathermap.org/data/3.0/onecall", {
-			APPID: OPEN_WEATHER_APPID,
-			lat: 40.98,
-			lon: -74.11,
-			units: "imperial",
-			lang: "en"
-		}).done(function (data) {
-			console.log("Onecall Endpoint");
-			console.log('The entire response:', data);
-			console.log('Diving in - here is current information: ', data.current);
-			console.log('A step further - information for tomorrow: ', data.daily[1]);
+	// (function () {
+	
+	
+	// Onecall Endpoint
+	// $.get("http://api.openweathermap.org/data/3.0/onecall", {
+	// 	APPID: OPEN_WEATHER_APPID,
+	// 	lat: 40.98,
+	// 	lon: -74.11,
+	// 	units: "imperial",
+	// 	lang: "en"
+	// }).done(function (data) {
+	// 	// console.log("Onecall Endpoint");
+	// 	console.log('The entire response:', data);
+	// 	// console.log('Diving in - here is current information: ', data.current);
+	// 	// console.log('A step further - information for tomorrow: ', data.daily[1]);
+	// 	console.log(data.daily[1].temp.max);
+	// });
+	
+	// Weather Endpoint
+	// $.get("http://api.openweathermap.org/data/2.5/weather", {
+	// 	APPID: OPEN_WEATHER_APPID,
+	// 	q: "Ridgewood, US",
+	// 	units: "imperial"
+	// }).done(function (data) {
+	// 	console.log("Weather Endpoint")
+	// 	console.log(data);
+	// 	console.log(data.name);
+	// });
+	//
+	// // Forecast Endpoint
+	// $.get("http://api.openweathermap.org/data/2.5/forecast", {
+	// 	APPID: OPEN_WEATHER_APPID,
+	// 	lat: 40.98,
+	// 	lon: -74.11,
+	// 	units: "imperial"
+	// }).done(function (data) {
+	// 	console.log("Forecast Endpoint")
+	// 	console.log('5 day forecast', data);
+	// });
+	
+	function buildWeather(searchString) {
+		geocode(searchString, MAPBOX_KEY).then(function (results) {
+			console.log(results[0]); //lat
+			console.log(results[1]); //lon
+			
+			$.get("http://api.openweathermap.org/data/2.5/weather", {
+				APPID: OPEN_WEATHER_APPID,
+				lat: results[1],
+				lon: results[0],
+				units: "imperial"
+			}).done(function (data) {
+				let html = "";
+				html += `<h4>Current location: ${data.name}</h4>`;
+				html += `<h4>Current weather: ${data.weather[0].description}</h4>`;
+				html += `<h5>Current average wind speed: ${parseInt(data.wind.speed)} knots</h5>`;
+				html += `<h5>Current Temperature: ${parseInt(data.main.temp)} &deg;</h5>`;
+				html += `<h5>Current humidity: ${parseInt(data.main.humidity)}</h5>`;
+				
+				$("#weatherBody").html(html);
+			});
+			
+			$.get("http://api.openweathermap.org/data/3.0/onecall", {
+				APPID: OPEN_WEATHER_APPID,
+				lat: results[1],
+				lon: results[0],
+				units: "imperial",
+				lang: "en"
+			}).done(function (data) {
+				let html = ""
+				for (i = 1; i <= 5; i++) {
+					console.log('The entire response:', data);
+					html += `<h3> ${i}'s forecasted high is: ${parseInt(data.daily[i].temp.day)}`;
+				}
+				$("#forecastBody").html(html);
+			});
 		});
-		
-		// // Weather Endpoint
-		// $.get("http://api.openweathermap.org/data/2.5/weather", {
-		// 	APPID: OPEN_WEATHER_APPID,
-		// 	q: "Ridgewood, US",
-		// 	units: "imperial"
-		// }).done(function (data) {
-		// 	console.log("Weather Endpoint")
-		// 	console.log(data);
-		// });
-		//
-		// // Forecast Endpoint
-		// $.get("http://api.openweathermap.org/data/2.5/forecast", {
-		// 	APPID: OPEN_WEATHER_APPID,
-		// 	lat: 40.98,
-		// 	lon: -74.11,
-		// 	units: "imperial"
-		// }).done(function (data) {
-		// 	console.log("Forecast Endpoint")
-		// 	console.log('5 day forecast', data);
-		// });
-		
-		
-	})();
+	}
+	
+	$("#myBtn").click(function (e) {
+		e.preventDefault();
+		// console.log($("#searchInput").val());
+		buildWeather($("#searchInput").val());
+	})
+	// })();
 </script>
 
 
