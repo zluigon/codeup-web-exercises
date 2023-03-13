@@ -20,6 +20,14 @@
 
 </head>
 <body>
+
+<nav class="navbar bg-primary pb-0">
+	<div class="container-fluid d-flex justify-between">
+		<span class="navbar-brand fs-1 text-light">WeatherMap</span>
+		<span class="navbar-brand fs-5 text-light" id="currentLocation"></span>
+	</div>
+</nav>
+
 <div>
 	<input type="text" placeholder="Search for weather" id="searchInput">
 	<button id="myBtn">Click here to search</button>
@@ -109,13 +117,14 @@
 				units: "imperial"
 			}).done(function (data) {
 				let html = "";
-				html += `<h4>Current location: ${data.name}</h4>`;
+				html += `<h4>Current location: ${$("#searchInput").val()}</h4>`;
 				html += `<h4>Current weather: ${data.weather[0].description}</h4>`;
 				html += `<h5>Current average wind speed: ${parseInt(data.wind.speed)} knots</h5>`;
 				html += `<h5>Current Temperature: ${parseInt(data.main.temp)} &deg;</h5>`;
 				html += `<h5>Current humidity: ${parseInt(data.main.humidity)}</h5>`;
 				
 				$("#weatherBody").html(html);
+				$("#currentLocation").text(`Current location: ${$("#searchInput").val()}`);
 			});
 			
 			$.get("http://api.openweathermap.org/data/3.0/onecall", {
@@ -137,7 +146,6 @@
 	
 	$("#myBtn").click(function (e) {
 		e.preventDefault();
-		// console.log($("#searchInput").val());
 		buildWeather($("#searchInput").val());
 	})
 	// })();
