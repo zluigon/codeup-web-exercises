@@ -62,101 +62,106 @@
 <script src="js/mapbox-geocoder-utils.js"></script>
 
 <script>
-	mapboxgl.accessToken = MAPBOX_KEY;
 	
-	const map = new mapboxgl.Map({
-		container: 'map', // container ID
-		style: 'mapbox://styles/mapbox/streets-v12', // style URL
-		center: [-74.11, 40.98], // starting position [lng, lat]
-		zoom: 13, // starting zoom
-	});
-	
-	// Add zoom and rotation controls to the map.
-	map.addControl(new mapboxgl.NavigationControl());
-	
-	// Create a default Marker and add it to the map.
-	// const marker = new mapboxgl.Marker()
-	// 		.setLngLat([-74.111, 40.984])
-	// 		.addTo(map);
-	
-	// Add Popup
-	// const cafePopup = new mapboxgl.Popup()
-	// 		.setHTML("<p>This is my favorite restaurant</p>");
-	//
-	// marker.setPopup(cafePopup);
-	
-	// Array of favorite restaurants
-	const restaurants = [{
-		name: "Cafe 37",
-		address: [-74.111, 40.984],
-		message: "<p>Eclectic New American cuisine is artfully presented at this charming venue with patio seating.</p>"
-	}, {
-		name: "Park West Tavern",
-		address: [-74.110, 40.980],
-		message:
-				"<p>Warm pick for New American cuisine, including steaks & seafood, plus a full bar with craft brews</p>"
-	}, {
-		name: "Brooklyn's Brick Oven Pizzeria",
-		address: [-74.117, 40.979],
-		message: "<p>Popular pizzeria serving up brick-oven pies & casual Italian grub.</p>"
-	}];
-	
-	// forEach creating marker and popup for every restaurant
-	restaurants.forEach(function (restaurant) {
-		const marker = new mapboxgl.Marker()
-				.setLngLat(restaurant.address)
-				.addTo(map);
+	(function() {
 		
-		const popUp = new mapboxgl.Popup()
-				.setHTML(restaurant.name + "\n" + restaurant.message)
-		marker.setPopup(popUp)
-	});
-	
-	
-	// Add zoom selector
-	const zoomSelect = document.querySelector("#zoom-select");
-	
-	function zoom(e) {
-		e.preventDefault();
-		let zoomValue = zoomSelect.value;
-		map.setZoom(zoomValue);
-	}
-	
-	zoomSelect.addEventListener("change", zoom);
-	
-	// 	Add geocoding
-	const userInput = document.querySelector("#geocode-search");
-	const searchBtn = document.querySelector("#search-btn");
-	
-	
-	function searchGeo(search, token) {
-		const input = userInput.value;
 		
-		geocode(input, token).then(function (results) {
-			let marker = new mapboxgl.Marker()
-					.setLngLat(results)
+		mapboxgl.accessToken = MAPBOX_KEY;
+		
+		const map = new mapboxgl.Map({
+			container: 'map', // container ID
+			style: 'mapbox://styles/mapbox/streets-v12', // style URL
+			center: [-74.11, 40.98], // starting position [lng, lat]
+			zoom: 13, // starting zoom
+		});
+		
+		// Add zoom and rotation controls to the map.
+		map.addControl(new mapboxgl.NavigationControl());
+		
+		// Create a default Marker and add it to the map.
+		// const marker = new mapboxgl.Marker()
+		// 		.setLngLat([-74.111, 40.984])
+		// 		.addTo(map);
+		
+		// Add Popup
+		// const cafePopup = new mapboxgl.Popup()
+		// 		.setHTML("<p>This is my favorite restaurant</p>");
+		//
+		// marker.setPopup(cafePopup);
+		
+		// Array of favorite restaurants
+		const restaurants = [{
+			name: "Cafe 37",
+			address: [-74.111, 40.984],
+			message: "<p>Eclectic New American cuisine is artfully presented at this charming venue with patio seating.</p>"
+		}, {
+			name: "Park West Tavern",
+			address: [-74.110, 40.980],
+			message:
+					"<p>Warm pick for New American cuisine, including steaks & seafood, plus a full bar with craft brews</p>"
+		}, {
+			name: "Brooklyn's Brick Oven Pizzeria",
+			address: [-74.117, 40.979],
+			message: "<p>Popular pizzeria serving up brick-oven pies & casual Italian grub.</p>"
+		}];
+		
+		// forEach creating marker and popup for every restaurant
+		restaurants.forEach(function (restaurant) {
+			const marker = new mapboxgl.Marker()
+					.setLngLat(restaurant.address)
 					.addTo(map);
 			
-			map.flyTo({
-				center: results,
-				zoom: 16,
-			});
-			
+			const popUp = new mapboxgl.Popup()
+					.setHTML(restaurant.name + "\n" + restaurant.message)
+			marker.setPopup(popUp)
 		});
-	}
-	
-	searchBtn.addEventListener("click", function () {
-		let searchInput = searchGeo.value;
-		searchGeo(searchInput, MAPBOX_KEY);
-	});
-	
-	// 	Toggle marker display
-	// Marker class: class="mapboxgl-marker
-	
-	$("#toggle-markers").click(function () {
-		$(".mapboxgl-marker").toggle();
-	});
-
+		
+		
+		// Add zoom selector
+		const zoomSelect = document.querySelector("#zoom-select");
+		
+		function zoom(e) {
+			e.preventDefault();
+			let zoomValue = zoomSelect.value;
+			map.setZoom(zoomValue);
+		}
+		
+		zoomSelect.addEventListener("change", zoom);
+		
+		// 	Add geocoding
+		const userInput = document.querySelector("#geocode-search");
+		const searchBtn = document.querySelector("#search-btn");
+		
+		
+		function searchGeo(search, token) {
+			const input = userInput.value;
+			
+			geocode(input, token).then(function (results) {
+				let marker = new mapboxgl.Marker()
+						.setLngLat(results)
+						.addTo(map);
+				
+				map.flyTo({
+					center: results,
+					zoom: 16,
+				});
+				
+			});
+		}
+		
+		searchBtn.addEventListener("click", function () {
+			let searchInput = searchGeo.value;
+			searchGeo(searchInput, MAPBOX_KEY);
+		});
+		
+		// 	Toggle marker display
+		// Marker class: class="mapboxgl-marker
+		
+		$("#toggle-markers").click(function () {
+			$(".mapboxgl-marker").toggle();
+		});
+		
+	})();
 </script>
 
 </body>
