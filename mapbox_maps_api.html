@@ -23,44 +23,46 @@
 
 <div class="container d-flex flex-column justify-center align-items-center">
 	<h1>My Maps</h1>
-
+	
 	<div class="mb-3" id='map' style='width: 500px; height: 500px;'></div>
 	
 	<div style='width: 500px;'>
-	<div class="input-group mb-3">
-		<select class="form-select" name="zoom-select" id="zoom-select">
-			<option value="12">Select a Zoom level</option>
-			<option value="0">0</option>
-			<option value="5">5</option>
-			<option value="15">15</option>
-			<option value="20">20</option>
-		</select>
-	</div>
-	
-	<div class="input-group mb-3">
-		<label class="form-label" for="geocode-search"></label>
-		<input class="form-control" type="search" id="geocode-search" placeholder="Enter address">
-		<button class="btn btn-outline-warning" type="submit" id="search-btn">Search</button>
-	</div>
-	
-	<div class="input-group mb-3">
-		<button class="btn btn-outline-warning" type="button" id="toggle-markers">Click to toggle markers</button>
-	</div>
+		<div class="input-group mb-3">
+			<select class="form-select" name="zoom-select" id="zoom-select">
+				<option value="12">Select a Zoom level</option>
+				<option value="0">0</option>
+				<option value="5">5</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+			</select>
+		</div>
+		
+		<div class="input-group mb-3">
+			<label class="form-label" for="geocode-search"></label>
+			<input class="form-control" type="search" id="geocode-search" placeholder="Enter address">
+			<button class="btn btn-outline-warning" type="submit" id="search-btn">Search</button>
+		</div>
+		
+		<div class="input-group mb-3">
+			<button class="btn btn-outline-warning" type="button" id="toggle-markers">Click to toggle markers</button>
+		</div>
 	</div>
 </div>
 
+<!--Bootstrap-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous">
 </script>
 
+<!--keys-->
+<script src="js/keys.js"></script>
+
+<!--geocoder-->
 <script src="js/mapbox-geocoder-utils.js"></script>
 
 <script>
-	
-	const myToken = 'pk.eyJ1Ijoiemx1aWdvbiIsImEiOiJjbGYyb2oyZWswa2l1M3RvODRxenJ2MWVoIn0.BlJ22abmg_RrUUe0bvMFSg'
-	
-	mapboxgl.accessToken = myToken;
+	mapboxgl.accessToken = MAPBOX_KEY;
 	
 	const map = new mapboxgl.Map({
 		container: 'map', // container ID
@@ -145,9 +147,7 @@
 	
 	searchBtn.addEventListener("click", function () {
 		let searchInput = searchGeo.value;
-		let myToken = 'pk.eyJ1Ijoiemx1aWdvbiIsImEiOiJjbGYyb2oyZWswa2l1M3RvODRxenJ2MWVoIn0.BlJ22abmg_RrUUe0bvMFSg'
-		
-		searchGeo(searchInput, myToken);
+		searchGeo(searchInput, MAPBOX_KEY);
 	});
 	
 	// 	Toggle marker display
