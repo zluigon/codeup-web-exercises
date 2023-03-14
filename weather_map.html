@@ -14,9 +14,15 @@
 	        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 	
 	<!--Mapbox-->
-	
 	<script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
+	
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
 
 </head>
 <body>
@@ -28,15 +34,62 @@
 	</div>
 </nav>
 
-<div>
-	<input type="text" placeholder="Search for weather" id="searchInput">
-	<button id="myBtn">Click here to search</button>
-</div>
+<section
+		class="main-heading container-fluid border border-primary border-3 d-flex justify-content-evenly align-items-center text-center">
+	<div class="left-heading">
+		<h3>Current Locale:</h3>
+	</div>
+	<div class="center-heading input-group justify-content-center">
+		<h1>It da weather</h1>
+		<div class="input-group">
+			<input class="form-control" type="text" placeholder="Enter a City, State" id="searchInput">
+			<button class="btn btn-outline-primary" id="myBtn">Search</button>
+		</div>
+	</div>
+	<div class="right-heading">
+		<h3>Weather Warning</h3>
+	</div>
+</section>
+
+<section class="main-body  border border-success border-3">
+	<div class="cards container-fluid">
+		<div class="row mx-auto">
+			<div class="current col-md-4">
+				<div class="card">
+					<div class="card-body"><p>tuday</p></div>
+				</div>
+			</div>
+			<div class="second-day col-3 col-md-2">
+				<div class="card">
+					<div class="card-body"><p>2mroo</p></div>
+				</div>
+			</div>
+			<div class="third-day col-3 col-md-2">
+				<div class="card">
+				<div class="card-body"><p>next dai</p></div>
+			</div>
+			</div>
+			<div class="fourth-day col-3 col-md-2">
+				<div class="card">
+					<div class="card-body"><p>after dat</p></div>
+				</div>
+			</div>
+			<div class="fifth-day col-3 col-md-2">
+				<div class="card">
+					<div class="card-body"><p>last dei</p></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container-fluid mapbox border border-danger border-3 p-0">
+	<div id='map' style='width: 100%; height: 300px;'></div>
+</section>
+
 <div id="weatherBody"></div>
 
 <div id="forecastBody"></div>
-
-<div id='map' style='width: 400px; height: 300px;'></div>
 
 
 <!--JS Scripts-->
@@ -51,59 +104,21 @@
 
 <script src="js/mapbox-geocoder-utils.js"></script>
 
-<!--<script>-->
-<!--	mapboxgl.accessToken = MAPBOX_KEY;-->
-<!--	-->
-<!--	const map = new mapboxgl.Map({-->
-<!--		container: 'map', // container ID-->
-<!--		style: 'mapbox://styles/mapbox/streets-v12', // style URL-->
-<!--		center: [-74.11, 40.98], // starting position [lng, lat]-->
-<!--		zoom: 12, // starting zoom-->
-<!--	});-->
-<!--</script>-->
+<script>
+	mapboxgl.accessToken = MAPBOX_KEY;
+	
+	const map = new mapboxgl.Map({
+		container: 'map', // container ID
+		style: 'mapbox://styles/mapbox/streets-v12', // style URL
+		center: [-74.11, 40.98], // starting position [lng, lat]
+		zoom: 12, // starting zoom
+	});
+</script>
 
 
 <!--Custom JS-->
 <script>
 	// (function () {
-	
-	
-	// Onecall Endpoint
-	// $.get("http://api.openweathermap.org/data/3.0/onecall", {
-	// 	APPID: OPEN_WEATHER_APPID,
-	// 	lat: 40.98,
-	// 	lon: -74.11,
-	// 	units: "imperial",
-	// 	lang: "en"
-	// }).done(function (data) {
-	// 	// console.log("Onecall Endpoint");
-	// 	console.log('The entire response:', data);
-	// 	// console.log('Diving in - here is current information: ', data.current);
-	// 	// console.log('A step further - information for tomorrow: ', data.daily[1]);
-	// 	console.log(data.daily[1].temp.max);
-	// });
-	
-	// Weather Endpoint
-	// $.get("http://api.openweathermap.org/data/2.5/weather", {
-	// 	APPID: OPEN_WEATHER_APPID,
-	// 	q: "Ridgewood, US",
-	// 	units: "imperial"
-	// }).done(function (data) {
-	// 	console.log("Weather Endpoint")
-	// 	console.log(data);
-	// 	console.log(data.name);
-	// });
-	//
-	// // Forecast Endpoint
-	// $.get("http://api.openweathermap.org/data/2.5/forecast", {
-	// 	APPID: OPEN_WEATHER_APPID,
-	// 	lat: 40.98,
-	// 	lon: -74.11,
-	// 	units: "imperial"
-	// }).done(function (data) {
-	// 	console.log("Forecast Endpoint")
-	// 	console.log('5 day forecast', data);
-	// });
 	
 	function buildWeather(searchString) {
 		geocode(searchString, MAPBOX_KEY).then(function (results) {
@@ -136,8 +151,8 @@
 			}).done(function (data) {
 				let html = ""
 				for (i = 1; i <= 5; i++) {
-					console.log('The entire response:', data);
 					html += `<h3> ${i}'s forecasted high is: ${parseInt(data.daily[i].temp.day)}`;
+					console.log('The entire response:', data);
 				}
 				$("#forecastBody").html(html);
 			});
