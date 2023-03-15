@@ -7,8 +7,8 @@
     font-family: 'Ubuntu Mono', monospace;
 }
 
-.card {
-    /*background-color: #b4d455;*/
+body {
+    background-color: #c6d5f6;
 }
 
 #map {
