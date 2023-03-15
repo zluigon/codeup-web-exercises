@@ -30,22 +30,23 @@
 	</div>
 </nav>
 
-<section class="row mb-3 main-heading container d-flex justify-content-center align-items-center">
-	<div class="col-7">
+<section class="row mb-3 main-heading container-fluid mx-0 d-flex justify-content-center">
+	<div class="col-sm-8 mb-3">
 		<div class="input-group">
 			<input class="form-control" type="text" placeholder="Enter a location" id="searchInput">
 			<button class="btn btn-primary" id="myBtn">Search</button>
 		</div>
 	</div>
-<!--	<div class="col-3">-->
-<!--		<select class="form-select" id="weather-style">-->
-<!--			<option value="mapbox://styles/mapbox/streets-v12">Streets</option>-->
-<!--			<option value="mapbox://styles/mapbox/outdoors-v12">Outdoors</option>-->
-<!--			<option value="mapbox://styles/mapbox/light-v11">Light</option>-->
-<!--			<option value="mapbox://styles/mapbox/dark-v11">Dark</option>-->
-<!--			<option value="mapbox://styles/mapbox/satellite-v9">Satellite</option>-->
-<!--		</select>-->
-<!--	</div>-->
+	<div class="col-sm-4 col-md-2">
+		<select class="form-select" id="weather-style">
+<!--			<option selected value="mapbox://styles/mapbox/streets-v12">Select a Map Style</option>-->
+			<option value="mapbox://styles/mapbox/streets-v12">Streets</option>
+			<option value="mapbox://styles/mapbox/outdoors-v12">Outdoors</option>
+			<option value="mapbox://styles/mapbox/light-v11">Light</option>
+			<option value="mapbox://styles/mapbox/dark-v11">Dark</option>
+			<option value="mapbox://styles/mapbox/satellite-v9">Satellite</option>
+		</select>
+	</div>
 </section>
 
 <div class="warning mb-3" id="warning">
@@ -57,7 +58,7 @@
 		
 		<div class="row">
 			<div class="current col">
-				<div class="card mb-3">
+				<div class="card bg-light mb-3">
 					<div class="card-body row">
 						<div class="col-6 d-flex flex-column justify-content-center align-items-center"
 						     id="current-weather"></div>

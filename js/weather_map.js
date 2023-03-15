@@ -1,4 +1,4 @@
-// (function () {
+(function () {
 "use strict";
 
 $(document).ready(function () {
@@ -12,12 +12,15 @@ $(document).ready(function () {
 		zoom: 5, // starting zoom
 	});
 	
+	map.on("load", function () {
+		map.resize();
+	});
 	// change map style
-	// $("#weather-style").change(function (e){
-	// 	e.preventDefault();
-	// 	let styleValue = $("#weather-style").val();
-	// 	console.log(styleValue);
-	// })
+	$("#weather-style").change(function (e) {
+		e.preventDefault();
+		let styleValue = $("#weather-style").val();
+		map.setStyle(styleValue);
+	})
 	
 	let weatherLocale = {
 		lat: 40.98,
@@ -64,6 +67,10 @@ $(document).ready(function () {
 			weatherLocale.lat = results[1]
 			buildWeather();
 			marker.setLngLat([weatherLocale.lon, weatherLocale.lat])
+			map.flyTo({
+				center: results,
+				zoom: 10,
+			});
 		});
 	});
 	
@@ -97,17 +104,17 @@ $(document).ready(function () {
 					$(".warning_content").html(`<span>${data.alerts[0].description}</span>`);
 				}
 				
-				$("#current-weather").html(`<h4>Today's Weather: ${dayOneDate}</h4><h4>${data.current.weather[0].main},  ${Math.floor(data.current.temp)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.current.weather[0].icon}.png"><h5>H: ${Math.floor(data.daily[0].temp.max)}&deg;, L: ${Math.floor(data.daily[0].temp.min)}&deg; </h5>`);
+				$("#current-weather").html(`<h4>Current Weather: ${dayOneDate}</h4><h3>${data.current.weather[0].main} ${Math.floor(data.current.temp)}&deg;</h3><img src="http://openweathermap.org/img/w/${data.current.weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[0].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[0].temp.min)}&deg; </h5>`);
 				
-				$("#current-misc").html(`<h4>Feels like: ${Math.floor(data.current.feels_like)}&deg;</h4><h4>Humidity: ${Math.floor(data.current.humidity)}%</h4><h4>Wind Speed: ${Math.floor(data.current.wind_speed)} MPH</h4><h4>Sunrise: ${dayOneSunrise}</h4><h4>Sunset: ${dayOneSunset}</h4>`)
+				$("#current-misc").html(`<h4><img src="../img/fahrenheit.png"> ${Math.floor(data.current.feels_like)}&deg;</h4><h4><img src="../img/humidity.png"> ${Math.floor(data.current.humidity)}%</h4><h4><img src="../img/wind.png"> ${Math.floor(data.current.wind_speed)} MPH</h4><h4><img src="../img/dawn.png"> ${dayOneSunrise}</h4><h4><img src="../img/sunset.png"> ${dayOneSunset}</h4>`)
 				
-				$("#day-1").html(`<h6>${dayTwoDate}</h6><h4>${data.daily[1].weather[0].main},  ${Math.floor(data.current.temp)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[1].weather[0].icon}.png"><h5>H: ${Math.floor(data.daily[1].temp.max)}&deg;, L: ${Math.floor(data.daily[1].temp.min)}&deg; </h5>`);
+				$("#day-1").html(`<h5>${dayTwoDate}</h5><h4>${data.daily[1].weather[0].main} ${Math.floor(data.daily[1].temp.day)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[1].weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[1].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[1].temp.min)}&deg; </h5>`);
 				
-				$("#day-2").html(`<h6>${dayThreeDate}</h6><h4>${data.daily[2].weather[0].main},  ${Math.floor(data.current.temp)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[2].weather[0].icon}.png"><h5>H: ${Math.floor(data.daily[2].temp.max)}&deg;, L: ${Math.floor(data.daily[2].temp.min)}&deg; </h5>`);
+				$("#day-2").html(`<h5>${dayThreeDate}</h5><h4>${data.daily[2].weather[0].main} ${Math.floor(data.daily[2].temp.day)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[2].weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[2].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[2].temp.min)}&deg; </h5>`);
 				
-				$("#day-3").html(`<h6>${dayFourDate}</h6><h4>${data.daily[3].weather[0].main},  ${Math.floor(data.current.temp)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[3].weather[0].icon}.png"><h5>H: ${Math.floor(data.daily[3].temp.max)}&deg;, L: ${Math.floor(data.daily[3].temp.min)}&deg; </h5>`);
+				$("#day-3").html(`<h5>${dayFourDate}</h5><h4>${data.daily[3].weather[0].main} ${Math.floor(data.daily[3].temp.day)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[3].weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[3].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[3].temp.min)}&deg; </h5>`);
 				
-				$("#day-4").html(`<h6>${dayFiveDate}</h6><h4>${data.daily[4].weather[0].main},  ${Math.floor(data.current.temp)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[4].weather[0].icon}.png"><h5>H: ${Math.floor(data.daily[4].temp.max)}&deg;, L: ${Math.floor(data.daily[4].temp.min)}&deg; </h5>`);
+				$("#day-4").html(`<h5>${dayFiveDate}</h5><h4>${data.daily[4].weather[0].main} ${Math.floor(data.daily[4].temp.day)}&deg;</h4><img src="http://openweathermap.org/img/w/${data.daily[4].weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[4].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[4].temp.min)}&deg; </h5>`);
 			});
 		
 		$.get("http://api.openweathermap.org/data/2.5/weather", weatherLocale).done(function (data) {
@@ -118,7 +125,7 @@ $(document).ready(function () {
 	
 	buildWeather([-74.11, 40.98]);
 });
-// })();
+})();
 
 
 
