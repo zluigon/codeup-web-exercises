@@ -37,10 +37,9 @@ $(document).ready(function () {
 	
 	function onDragEnd() {
 		const lngLat = marker.getLngLat();
-		console.log(`Longitude: ${lngLat.lng}, Latitude: ${lngLat.lat}`);
+		console.log(`onDrag: Longitude: ${lngLat.lng}, Latitude: ${lngLat.lat}`);
 		let lat = lngLat.lat
 		let lng = lngLat.lng
-		console.log(lngLat);
 		weatherLocale.lon = lng
 		weatherLocale.lat = lat
 		buildWeather();
@@ -50,6 +49,7 @@ $(document).ready(function () {
 	
 	map.on('dblclick', (e) => {
 		e.preventDefault()
+		console.log("dblClick "+ e.lngLat)
 		weatherLocale.lon = e.lngLat.lng
 		weatherLocale.lat = e.lngLat.lat
 		buildWeather();
@@ -78,7 +78,8 @@ $(document).ready(function () {
 		
 		$.get("http://api.openweathermap.org/data/3.0/onecall", weatherLocale)
 			.done(function (data) {
-				console.log(data);
+				// console.log("Onecall API");
+				// console.log(data);
 				
 				function parseDate(timestamp) {
 					return new Date(timestamp * 1000).toLocaleDateString();
@@ -104,7 +105,7 @@ $(document).ready(function () {
 					$(".warning_content").html(`<span>${data.alerts[0].description}</span>`);
 				}
 				
-				$("#current-weather").html(`<h4>Current Weather: ${dayOneDate}</h4><h3>${data.current.weather[0].main} ${Math.floor(data.current.temp)}&deg;</h3><img src="http://openweathermap.org/img/w/${data.current.weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[0].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[0].temp.min)}&deg; </h5>`);
+				$("#current-weather").html(`<h3>Current Weather: ${dayOneDate}</h3><h3>${data.current.weather[0].main} ${Math.floor(data.current.temp)}&deg;</h3><img src="http://openweathermap.org/img/w/${data.current.weather[0].icon}.png"><h5><img src="../img/high-temperature.png"> ${Math.floor(data.daily[0].temp.max)}&deg; <img src="../img/low-temperature.png"> ${Math.floor(data.daily[0].temp.min)}&deg; </h5>`);
 				
 				$("#current-misc").html(`<h4><img src="../img/fahrenheit.png"> ${Math.floor(data.current.feels_like)}&deg;</h4><h4><img src="../img/humidity.png"> ${Math.floor(data.current.humidity)}%</h4><h4><img src="../img/wind.png"> ${Math.floor(data.current.wind_speed)} MPH</h4><h4><img src="../img/dawn.png"> ${dayOneSunrise}</h4><h4><img src="../img/sunset.png"> ${dayOneSunset}</h4>`)
 				
@@ -118,8 +119,9 @@ $(document).ready(function () {
 			});
 		
 		$.get("http://api.openweathermap.org/data/2.5/weather", weatherLocale).done(function (data) {
+			// console.log("Weather API");
 			console.log(data);
-			$("#currentLocation").html(`<span class="text-nowrap">Current Location: ${data.name}, ${data.sys.country}</span>`)
+			$("#currentLocation").html(`<span class="text-nowrap fs-5">Current Location: ${data.name}, ${data.sys.country}</span>`)
 		});
 	}
 	
