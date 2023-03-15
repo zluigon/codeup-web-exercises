@@ -34,12 +34,12 @@
 <section class="row mb-3 main-heading container-fluid mx-0 d-flex justify-content-center">
 	<div class="col-sm-8 mb-3">
 		<div class="input-group">
-			<input class="form-control" type="text" placeholder="Enter a location" id="searchInput">
+			<input class="form-control bg-light" type="text" placeholder="Enter a location" id="searchInput">
 			<button class="btn btn-primary" id="myBtn">Search</button>
 		</div>
 	</div>
 	<div class="col-sm-4 col-md-3">
-		<select class="form-select" id="weather-style">
+		<select class="form-select bg-light" id="weather-style">
 			<!--			<option selected value="mapbox://styles/mapbox/streets-v12">Select a Map Style</option>-->
 			<option value="mapbox://styles/mapbox/streets-v12">Streets</option>
 			<option value="mapbox://styles/mapbox/outdoors-v12">Outdoors</option>
@@ -104,8 +104,10 @@
 	</div>
 </section>
 
-<section class="container-fluid mapbox p-0">
+<section class="container-fluid">
+	<div class="mapbox m-2">
 	<div id='map'></div>
+	</div>
 </section>
 
 <!--<div id="weatherBody"></div>-->

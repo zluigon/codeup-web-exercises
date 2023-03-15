@@ -15,6 +15,10 @@
 		map.on("load", function () {
 			map.resize();
 		});
+		
+		// Add zoom and rotation controls to the map.
+		map.addControl(new mapboxgl.NavigationControl());
+		
 		// change map style
 		$("#weather-style").change(function (e) {
 			e.preventDefault();
@@ -30,7 +34,8 @@
 		}
 		
 		const marker = new mapboxgl.Marker({
-			draggable: true
+			draggable: true,
+			color: '#F84C4C'
 		})
 			.setLngLat([-74.11, 40.98])
 			.addTo(map);
@@ -69,7 +74,7 @@
 				marker.setLngLat([updateWeatherLocation.lon, updateWeatherLocation.lat])
 				map.flyTo({
 					center: results,
-					zoom: 10,
+					zoom: 12,
 				});
 			});
 		});
@@ -79,7 +84,7 @@
 			$.get("http://api.openweathermap.org/data/3.0/onecall", updateWeatherLocation)
 				.done(function (data) {
 					// console.log("Onecall API");
-					// console.log(data);
+					console.log(data);
 					
 					function parseDate(timestamp) {
 						return new Date(timestamp * 1000).toLocaleDateString();
