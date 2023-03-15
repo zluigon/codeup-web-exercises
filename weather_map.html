@@ -20,7 +20,8 @@
 	<link rel="stylesheet" href="css/weather_map.css">
 
 </head>
-<body>
+
+<body class="bg-secondary">
 
 <nav class="navbar bg-primary pb-0 mb-3">
 	<div class="container-fluid d-flex justify-between">
@@ -33,7 +34,7 @@
 	<div class="col-7">
 		<div class="input-group">
 			<input class="form-control" type="text" placeholder="Enter a location" id="searchInput">
-			<button class="btn btn-outline-primary" id="myBtn">Search</button>
+			<button class="btn btn-primary" id="myBtn">Search</button>
 		</div>
 	</div>
 <!--	<div class="col-3">-->
@@ -47,12 +48,12 @@
 <!--	</div>-->
 </section>
 
+<div class="warning mb-3" id="warning">
+	<span class="warning_content"></span>
+</div>
+
 <section class="main-body">
 	<div class="cards container-fluid">
-		
-		<div class="warning mb-3" id="warning">
-			<span class="warning_content"></span>
-		</div>
 		
 		<div class="row">
 			<div class="current col">
