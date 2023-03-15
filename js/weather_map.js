@@ -9,7 +9,7 @@ $(document).ready(function () {
 		container: 'map', // container ID
 		style: 'mapbox://styles/mapbox/streets-v12', // style URL
 		center: [-74.11, 40.98], // starting position [lng, lat]
-		zoom: 5, // starting zoom
+		zoom: 12, // starting zoom
 	});
 	
 	map.on("load", function () {
