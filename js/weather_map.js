@@ -64,10 +64,10 @@
 		$("#myBtn").click(function (e) {
 			e.preventDefault();
 			let userInput = $("#searchInput").val();
-			console.log(userInput);
 			geocode(userInput, MAPBOX_KEY).then(function (results) {
-				console.log(results[0]); //lon
-				console.log(results[1]); //lat
+			console.log("onSearch " + userInput + " Lng: "+ results[0] + ",Lat: " + results[1]);
+				// console.log(results[0]); //lon
+				// console.log(results[1]); //lat
 				updateWeatherLocation.lon = results[0]
 				updateWeatherLocation.lat = results[1]
 				buildWeather();
@@ -84,7 +84,7 @@
 			$.get("http://api.openweathermap.org/data/3.0/onecall", updateWeatherLocation)
 				.done(function (data) {
 					// console.log("Onecall API");
-					console.log(data);
+					// console.log(data);
 					
 					function parseDate(timestamp) {
 						return new Date(timestamp * 1000).toLocaleDateString();
@@ -125,7 +125,7 @@
 			
 			$.get("http://api.openweathermap.org/data/2.5/weather", updateWeatherLocation).done(function (data) {
 				// console.log("Weather API");
-				console.log(data);
+				// console.log(data);
 				$("#currentLocation").html(`<span class="text-nowrap fs-5 text-light">Current Location: ${data.name}, ${data.sys.country}</span>`)
 			});
 		}
