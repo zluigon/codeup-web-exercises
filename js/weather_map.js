@@ -8,7 +8,7 @@
 		const map = new mapboxgl.Map({
 			container: 'map', // container ID
 			style: 'mapbox://styles/mapbox/streets-v12', // style URL
-			center: [-74.11, 40.98], // starting position [lng, lat]
+			center: [-74.11649240171937, 40.979259461189486], // starting position [lng, lat]
 			zoom: 12, // starting zoom
 		});
 		
@@ -27,8 +27,8 @@
 		})
 		
 		let updateWeatherLocation = {
-			lat: 40.98,
-			lon: -74.11,
+			lat: 40.979259461189486,
+			lon: -74.11649240171937,
 			appid: OPEN_WEATHER_APPID,
 			units: "imperial"
 		}
@@ -37,7 +37,7 @@
 			draggable: true,
 			color: '#F84C4C'
 		})
-			.setLngLat([-74.11, 40.98])
+			.setLngLat([-74.11649240171937, 40.979259461189486])
 			.addTo(map);
 		
 		function onDragEnd() {
@@ -129,8 +129,7 @@
 				$("#currentLocation").html(`<span class="text-nowrap fs-5 text-light">Current Location: ${data.name}, ${data.sys.country}</span>`)
 			});
 		}
-		
-		buildWeather([-74.11, 40.98]); // starting location Ridgewood, NJ
+		buildWeather([-74.11649240171937, 40.979259461189486]); // starting location Ridgewood, NJ
 	});
 })();
 
