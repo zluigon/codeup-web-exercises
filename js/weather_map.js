@@ -126,7 +126,7 @@
 			$.get("http://api.openweathermap.org/data/2.5/weather", updateWeatherLocation).done(function (data) {
 				// console.log("Weather API");
 				console.log(data);
-				$("#currentLocation").html(`<span class="text-nowrap fs-5">Current Location: ${data.name}, ${data.sys.country}</span>`)
+				$("#currentLocation").html(`<span class="text-nowrap fs-5 text-light">Current Location: ${data.name}, ${data.sys.country}</span>`)
 			});
 		}
 		

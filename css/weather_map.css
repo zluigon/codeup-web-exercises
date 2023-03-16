@@ -5,6 +5,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu Mono', monospace;
+    color: black;
 }
 
 body {
@@ -45,13 +46,14 @@ body {
 }
 
 #current-weather {
-    border-right: 1px solid #d4d4c9;
+    border-right: 1px solid #000000;
 }
 
 #current-misc {
-    border-left: 1px solid #d4d4c9;
+    border-left: 1px solid #000000;
 }
 
 .card {
     border: 3px black solid;
+    background-color: #ffffff !important;
 }
