@@ -33,15 +33,16 @@ body {
 .warning_content {
     display: block;
     width: 100%;
-    transform: translateX(100%);
-    animation: move 10s linear infinite;
+    animation: move 25s linear infinite;
 }
 
 /* Create the animation */
 @keyframes move {
-    to {
+    from {
         transform: translateX(0%);
-    }
+    } to {
+    transform: translateX(-100%);
+          }
 }
 
 #current-weather {
