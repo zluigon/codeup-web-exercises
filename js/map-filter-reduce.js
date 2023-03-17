@@ -71,3 +71,14 @@ let userNames = users.reduce(function (names, user) {
 }, "List of user names: ");
 
 console.log(userNames);
+
+// Thank you, David for help with bonus!!
+const uniqueList = users.reduce((list, user) => {
+	console.log(list);
+	list.push(...user.languages.filter(language => {
+		return !list.includes(language);
+	}))
+	return list;
+}, []);
+
+console.log(uniqueList);
