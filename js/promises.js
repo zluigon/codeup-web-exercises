@@ -5,6 +5,11 @@ fetch('https://api.github.com/repos/zluigon/codeup-web-exercises/commits', {head
 		console.log(`Last updated: ${data[0].commit.author.date}`)
 	});
 
+// Testing Endpoints
+
+// https://api.github.com/users/zluigon/events/public
+// https://api.github.com/repos/zluigon/codeup-web-exercises/commits
+
 let gitUser = (user) => {
 	fetch(`https://api.github.com/users/${user}/events`,
 		{headers: {'Authorization': gitHubAPI_token}})
@@ -15,7 +20,18 @@ let gitUser = (user) => {
 		})
 }
 
+// Bonus
+function wait(num) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (Math.random() > 0.5) {
+				resolve("Here is your data: ...");
+			} else {
+				reject("Network Connection Error!");
+			}
+		}, num);
+	});
+}
 
-// https://api.github.com/users/zluigon/events/public
-
-// https://api.github.com/repos/zluigon/codeup-web-exercises/commits
+wait(1000).then(() => console.log("You'll see this after 1 second"));
+wait(3000).then(() => console.log("You'll see this after 3 second"));
